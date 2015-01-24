@@ -1,0 +1,57 @@
+#search{
+  font-family:arial;
+  font-weight:bold;
+  text-transform:none;
+  color:white;
+  margin-right:10px;
+  float:right;
+  width:22vw;
+  height:3vh;
+}
+
+
+#searchBox{
+  padding:8px 15px;
+  left:-8px;
+  border:0px solid #dbdbdb;
+  background-color:rgb(219,219,219);
+}
+
+#searchButton{
+  position:relative;
+  padding:6px 15px;
+  left:-8px;
+  border:2px solid #207cca;
+  background-color:#207cca;
+  color:#fafafa;
+}
+
+#searchButton:hover{
+  background-color:#fafafa;
+  color:#207cca;
+  border-color:white;
+  cursor:pointer;
+}
+
+/*Ajax search box*/
+#searchSuggestion{
+  position: absolute;
+  background-color: rgba(64,64,64,0.9);
+  text-align: left;
+  width:222px;
+  max-height:150px;
+  overflow:auto;
+}
+
+#searchItem{
+  border-bottom:1px solid black;
+  color:white;
+  padding:5px;
+}
+
+#searchItem:hover{
+  background-color:white;
+  color:black;
+  border-color:white;
+}
+/*Ajax search box END*/

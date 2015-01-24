@@ -1,0 +1,104 @@
+#controls{
+  box-shadow:  0 8px 6px -3px black;
+  padding: 20px 10px 10px 20px;
+  border: 1px solid #DEDEDE;
+  background-color:#E0E0E0;
+}
+
+/*Admin input*/
+label{
+  text-align:right;
+  float:left;
+}
+
+#add, #remove, #update{
+  width:33%;
+  float:left;
+}
+
+#update{
+  clear:right;
+}
+
+fieldset{
+  height:360px;
+  overflow:scroll;
+}
+
+
+fieldset input, fieldset textarea{
+  float:right;
+  width:60%;
+  padding:5px;
+}
+
+
+fieldset p{
+  clear:both;
+  padding:5px;
+}
+
+#updateProductPhoto, #addProductPhoto{
+  border:1px solid grey;
+  padding:5px;
+  background-color: #FFFFFF;
+}
+
+.adminButton{
+  padding:6px 15px;
+  border:2px solid #207cca;
+  background-color:#207cca;
+  color:#fafafa;
+  border-radius:7px;
+  width:33%;
+  border:1px solid #000000;
+  margin: 0px 1px;
+  box-shadow:  0 8px 6px -6px black;
+}
+
+.adminButton:hover{
+  background-color:#FFFFFF;
+  color:#207cca;
+  cursor:pointer;
+  box-shadow:  0 8px 6px -15px black;
+}
+
+#addButton, #removeButton{
+  float:left;
+  width:33%;
+}
+
+#updateButton{
+  width:33%;
+}
+
+/*Admin input END*/
+
+
+/*Table of Products*/
+#products{
+  padding-top:20px;
+}
+
+table{
+  margin-top:20px;
+  width:100%;
+  border: 1px solid #DEDEDE;
+  border-collapse:collapse;
+  clear:left;
+}
+table td{
+  text-align:left;
+  padding:8px;
+}
+
+.tableAltColour{
+  background-color:#DEDEDE;
+}
+
+table th{
+  background-color:#ADADAD;
+  text-align:center;
+  padding:5px;
+}
+/*Table of Products END*/

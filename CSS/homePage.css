@@ -1,0 +1,47 @@
+section.homeItem{
+  border:1px solid black;
+  width:20%;
+  background-color: rgba(255,255,255,0.9);
+  padding:10px;
+  margin:1%;
+  display:block;
+  float:left;
+  box-shadow:  0 8px 6px -7px black;
+  margin-bottom:0;
+  padding-bottom:0px;
+}
+
+section.homeItem:hover{
+  cursor:pointer;
+  background-color:rgb(245,245,245);
+}
+
+.resultsName{
+  color: #207cca;
+}
+
+.resultsPrice{
+  color:#AB0000;
+}
+
+section.homeItem:hover > .resultsName{
+  text-decoration:underline;
+}
+
+.homeItem .resultsPrice{
+  margin-top:-10px;
+}
+
+.imageContainer{
+  width:100%;
+  height:100px;
+}
+
+.imageContainer img{
+  width:auto;
+  height: 100px;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+}

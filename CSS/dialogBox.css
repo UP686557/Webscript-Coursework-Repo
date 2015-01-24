@@ -1,0 +1,49 @@
+#dialogOverlay{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:700px;
+  height:700px;
+  background-color: #000000;
+  opacity: 0.85;
+}
+
+#dialogBox{
+  display:none;
+  position:fixed;
+  width:300px;
+  background-color:#CFCFCF;
+  color:#000000;
+  border-radius:10px;
+  box-shadow:  0 8px 6px -6px black;
+}
+
+#dialogHead, #dialogBody{
+  padding: 10px;
+}
+
+#dialogHead{
+  background-color:#9E9E9E;
+  border-radius: 10px 10px 0 0;
+  font-weight:bold;
+  text-align:center;
+}
+
+/*Dialog Done Button*/
+#dialogDone{
+  padding:6px 15px;
+  border:2px solid #207cca;
+  background-color:#207cca;
+  color:#fafafa;
+  border-radius:0 0 10px 10px;
+  margin: 0px 0px;
+  width:100%;
+}
+
+#dialogDone:hover{
+  border-color:#FFFFFF;
+  background-color:#FFFFFF;
+  color:#207cca;
+  cursor:pointer;
+}
