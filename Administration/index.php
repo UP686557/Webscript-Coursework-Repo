@@ -29,7 +29,7 @@
     <section id="controls">
       <section id="add">
         <fieldset class="fieldSet">
-          <legend>Add Product</legend>
+          <legend>Add</legend>
           <form id="addForm">
             <p><label>Name:* </label><input type=text name=productName id="addProductName" placeholder="Product Name..."></p>
             <p><label>Price:* </label><input type=number step="any" name=productPrice id="addProductPrice" placeholder="Price..."></p>
@@ -44,7 +44,7 @@
 
       <section id="remove">
         <fieldset class="fieldSet">
-          <legend>Remove Product</legend>
+          <legend>Remove</legend>
           <form id="removeForm">
             <p>Enter the ID of the product you wish to remove from the database and comfirm this action with the "Remove Product" button.</p>
             <p><label>ID:* </label><input type=text name=productID id="removeProductID" placeholder="Product ID..."></p>
@@ -72,7 +72,7 @@
 
       <p><button type=button id="addButton" class="adminButton">Add Product</button></p>
       <p><button type=button id="removeButton" class="adminButton">Remove Product</button></p>
-      <p><button type=button id="updateButton" class="adminButton">Update</button></p>
+      <p><button type=button id="updateButton" class="adminButton">Update Product</button></p>
 
     </section>
 

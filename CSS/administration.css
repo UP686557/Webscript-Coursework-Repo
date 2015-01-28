@@ -54,6 +54,7 @@ fieldset p{
   border:1px solid #000000;
   margin: 0px 1px;
   box-shadow:  0 8px 6px -6px black;
+  font-weight:bold;
 }
 
 .adminButton:hover{
