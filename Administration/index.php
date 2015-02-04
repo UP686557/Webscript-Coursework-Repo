@@ -10,11 +10,7 @@
   <meta charset="UTF-8">
 </head>
 
-<body>
-  <header>
-    <?php include '../navigationBar.php' ?>
-  </header>
-
+<body class="adminBody">
   <div id="dialogOverlay"></div>
   <div id="dialogBox">
     <div id="dialogHead"></div>

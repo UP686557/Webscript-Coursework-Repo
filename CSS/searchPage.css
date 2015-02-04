@@ -1,37 +1,64 @@
 .searchResult{
   border-bottom:1px solid grey;
-  background-color: rgba(226,227,220,0.9);
+  background-color: rgba(255,255,255,0.9);
   padding:10px;
   padding-bottom:5px;
   box-shadow:  0 8px 6px -7px black;
+  overflow:auto;
 }
 
 .searchResult:hover{
-  background-color: rgb(110,110,110);
-  color:white;
+  background-color:rgb(245,245,245);
   box-shadow:  0 8px 6px -15px black;
   cursor:pointer;
 }
 
+.searchResult:hover > section > h1.name{
+  text-decoration:underline;
+}
+
+.searchResult .photo img{
+  height:125px;
+  width:auto;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:auto;
+  margin-bottom:auto;
+  display:block;
+}
+
+.searchResult .photo{
+  float:left;
+  height:100px;
+  width: 250px;
+}
+
+.searchResult section{
+  float:left;
+}
+
 .quantity{
-  display:inline;
-  float:right;
+  display:block;
+  width:100px;
   font-size:10pt;
   margin-top:-10px;
-  padding: 10px;
+  padding: 0px 10px 10px 10px;
+}
+
+.name{
+  padding: 10px 10px 0px 10px;
+  color: #207cca;
 }
 
 .price{
-  display:block;
-  width:30%;
   margin-top:-10px;
+  padding:0px 10px 0px 10px;
+  color:#AB0000;
 }
 
 .description{
-  display:inline;
   font-size:10pt;
-  width:80%;
-  padding:10px 10px 10px 0px;
+  padding:0px 10px 0px 10px;
   margin-top:-10px;
 }
 
@@ -39,5 +66,5 @@
   font-size:10pt;
   width:30%;
   margin-top:-10px;
-  display:block;
+  padding: 0px 10px 0px 10px;
 }

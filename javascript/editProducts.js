@@ -82,13 +82,14 @@ function display(){
         var output = "<table><tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Price</th></tr>";
 
         for(var i=0; i<decodeResponse.length; i++){
+          var price = parseFloat(decodeResponse[i].Price);
           if(i % 2 == 0){
             output += "<tr>" +
                         "<td>" + decodeResponse[i].ID + "</td>" +
                         "<td>" + decodeResponse[i].Name + "</td>" +
                         "<td>" + decodeResponse[i].Description + "</td>" +
                         "<td>" + decodeResponse[i].Quantity + "</td>" +
-                        "<td>£" + decodeResponse[i].Price + "</td>" +
+                        "<td>£" + price.toFixed(2) + "</td>" +
                       "<tr>";
           }
           else{
@@ -97,7 +98,7 @@ function display(){
                         "<td class='tableAltColour'>" + decodeResponse[i].Name + "</td>" +
                         "<td class='tableAltColour'>" + decodeResponse[i].Description + "</td>" +
                         "<td class='tableAltColour'>" + decodeResponse[i].Quantity + "</td>" +
-                        "<td class='tableAltColour'>£" + decodeResponse[i].Price + "</td>" +
+                        "<td class='tableAltColour'>£" + price.toFixed(2) + "</td>" +
                       "<tr>";
           }
         }
@@ -113,9 +114,6 @@ function display(){
 
 addButton = document.getElementById("addButton");
 addButton.addEventListener("click", addProduct);
-//addButton.addEventListener("click", function(){
-//  Alert.render("Css Test", "Testing the Css of this dialog box");
-//});
 addButton.addEventListener("click", display);
 
 removeButton = document.getElementById("removeButton");

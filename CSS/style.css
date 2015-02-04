@@ -11,10 +11,14 @@ body{
 	font-family:arial;
 }
 
+body.adminBody{
+	padding-top:10px;
+}
+
 article{
 	border: 2px solid black;
 	margin-bottom:20px;
-	padding: 30px;
+	padding: 2%;
 	box-shadow:  0 8px 6px -7px black;
 	overflow:auto;
 }

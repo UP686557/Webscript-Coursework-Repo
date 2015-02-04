@@ -2,7 +2,6 @@ section.homeItem{
   width:20%;
   background-color: rgba(255,255,255,0.9);
   box-shadow:  0 8px 6px -7px black;
-  /*border:1px solid black;*/
   padding:10px;
   margin:1%;
   display:block;
@@ -16,16 +15,16 @@ section.homeItem:hover{
   background-color:rgb(245,245,245);
 }
 
+section.homeItem:hover > .resultsName{
+  text-decoration:underline;
+}
+
 .resultsName{
   color: #207cca;
 }
 
 .resultsPrice{
   color:#AB0000;
-}
-
-section.homeItem:hover > .resultsName{
-  text-decoration:underline;
 }
 
 .homeItem .resultsPrice{
