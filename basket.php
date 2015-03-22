@@ -14,10 +14,13 @@
     </header>
     <article>
       <h2>Basket</h2>
-      <section>
+      <section id=basket>
 
       </section>
     </article>
     <?php include 'footer.php' ?>
   </body>
+  <script language="JavaScript" type="text/javascript" src="../javascript/basketStorageManager.js"></script>
+  <script language="JavaScript" type="text/javascript" src="../javascript/basketSimpleManager.js"></script>
+  <script language="JavaScript" type="text/javascript" src="../javascript/basketSetup.js"></script>
 </html>

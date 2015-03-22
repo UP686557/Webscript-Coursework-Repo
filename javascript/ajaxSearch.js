@@ -38,26 +38,36 @@ function displaySuggestions(results){
   string = '';
   ss.innerHTML = '';
   for(var i=0; i<results.length; i++){
-    string += '<div id="searchItem">' + results[i].Name + '</div>';
+    string += '<div class="searchItem">' + results[i].Name + '</div>';
   }
   ss.innerHTML = string;
-  item = document.getElementById("searchItem");
-  item.addEventListener('click', setSearch);
-
+  ajaxResult = document.getElementsByClassName("searchItem");
+  for(i=0; i<ajaxResult.length; i++){
+    ajaxResult[i].addEventListener("click", function(){
+      setSearch(ajaxResult[i].value);
+    });
+  }
 }
 
-function setSearch(){
-  document.getElementById("searchBox").innerHTML = item.value;
+function setSearch(result){
+  document.getElementById("searchBox").innerHTML = result;
   document.getElementById("searchSuggestion").innerHTML = "";
 }
 
-searchBox.addEventListener('keyup', ajaxSearch);
 
+searchBox.addEventListener('keyup', ajaxSearch);
 searchBox.addEventListener('click', function(){
-  if(searchBox.value != ''){
-    ajaxSearch();
-  }
-});
+    if(searchBox.value != ''){
+      ajaxSearch();
+    }
+  });
+
+
+
 window.addEventListener('click', function(){
   document.getElementById('searchSuggestion').innerHTML = '';
   });
+
+
+
+  

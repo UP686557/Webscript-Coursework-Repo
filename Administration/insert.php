@@ -1,8 +1,6 @@
 <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "root";
-  $dbname = "products";
+require '../dbCredentials.php';
+
 
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

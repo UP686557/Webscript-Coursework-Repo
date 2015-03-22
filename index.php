@@ -14,10 +14,19 @@
 		<header>
 			<?php include 'navigationBar.php' ?>
 		</header>
+
 		<article id="homeSection">
 		</article>
+
+
+
 		<?php include 'footer.php' ?>
+
 		<script language="JavaScript" type="text/javascript" src="../javascript/homeDisplay.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../javascript/ajaxSearch.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../javascript/basketStorageManager.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../javascript/basketSimpleManager.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../javascript/basketSetup.js"></script>
 	</body>
 
 </html>

@@ -18,7 +18,7 @@
     <div id="dialogFoot"></div>
   </div>
 
-  <p id="test"></p>
+  <p><a href="../">to index page</a></p>
   <article class="adminSection">
     <h1>Administration</h1>
 
@@ -81,6 +81,7 @@
 
     <script language="JavaScript" type="text/javascript" src="../javascript/editProducts.js"></script>
     <script language="JavaScript" type="text/javascript" src="../javascript/customAlert.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../javascript/adminSearch.js"></script>
 
 </body>
 

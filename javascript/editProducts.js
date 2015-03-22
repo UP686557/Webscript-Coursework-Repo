@@ -103,13 +103,15 @@ function display(){
           }
         }
         output += "</table>";
-        tableSection.innerHTML += output;
+        tableSection.innerHTML = output;
       }
     }
     xmlhttp.open("GET", "../Administration/display.php", false);
     xmlhttp.send();
   }
 }
+
+window.addEventListener("load", display);
 
 
 addButton = document.getElementById("addButton");
@@ -124,6 +126,3 @@ removeButton.addEventListener("click", display);
 updateButton = document.getElementById("updateButton");
 updateButton.addEventListener("click", updateProduct);
 updateButton.addEventListener("click", display);
-
-
-window.addEventListener("load", display);
