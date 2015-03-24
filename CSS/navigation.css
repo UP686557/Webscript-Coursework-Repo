@@ -94,12 +94,11 @@ header>nav>ul>li>ul>li>a:active, header>nav>ul>li>ul>li>a:hover{
 /*Basket*/
 #basket{
   float:right;
-  width:3vw;
-  height:2.5vw;
+  width: 50px;
 }
 
 #numItems{
-  font-size:18pt;
+  font-size:12pt;
   display:inline;
 }
 

@@ -43,7 +43,7 @@ function searchItem(e){
   e.preventDefault();
   searchString = searchBox.value;
   article = document.getElementById("homeSection");
-  article.innerHTML = "";
+  article.innerHTML = '<p>You searched for: "' + searchString + '"</p>';
   var xmlhttp = getXmlHttpRequestObject();
   var string = '';
   if(xmlhttp){
@@ -56,7 +56,7 @@ function searchItem(e){
           section.classList.add("searchResult");
           section.dataset.detail = JSON.stringify(response[i]);
           article.appendChild(section);
-          section.innerHTML = '<p class="photo"><img src="' + response[i].Photo + '"></p><section><h1 class="name">' + response[i].Name + '</h1><p class="price">£' + price.toFixed(2) + '</p><p class="description">' + response[i].Description + '</p><p class="productID">ID: ' + response[i].ID + '</p><p class="quantity">Quantity: ' + response[i].Quantity + '</p></section>';
+          section.innerHTML += '<p class="photo"><img src="' + response[i].Photo + '"></p><section><h1 class="name">' + response[i].Name + '</h1><p class="price">£' + price.toFixed(2) + '</p><p class="description">' + response[i].Description + '</p><p class="productID">ID: ' + response[i].ID + '</p><p class="quantity">Quantity: ' + response[i].Quantity + '</p></section>';
 
         }
         var items = document.querySelectorAll(".searchResult");
@@ -76,15 +76,23 @@ function searchItem(e){
 function selectedProduct(event){
   target = event.currentTarget;
   homeSection = document.getElementById("homeSection");
-  detail = JSON.parse(target.dataset.detail)
+  homeSection.innerHTML = "";
+  detail = JSON.parse(target.dataset.detail);
   var price = parseFloat(detail.Price);
-  homeSection.innerHTML = "<h1>" + detail.Name + "</h1>";
-  homeSection.innerHTML += "<p><img class='resultsImage' src='" + detail.Photo + "'></p>";
-  homeSection.innerHTML += "<p>£" + price.toFixed(2) + "</p>";
-  homeSection.innerHTML += "<p>" + detail.Description + "</p>";
-  homeSection.innerHTML += "<p>ID: " + detail.ID + "</p>";
-  homeSection.innerHTML += "<button>Add to Basket</button>"
+  var section = document.createElement("section");
+
+  var basketButton = document.createElement("button");
+  basketButton.dataset.detail = JSON.stringify(detail);
+  basketButton.setAttribute("id","basketButton");
+  section.classList.add("productAttributes");
+  homeSection.appendChild(section);
+  section.innerHTML = "<a href='../'>back</a><p class='photo'><img class='productPhoto' src='" + detail.Photo + "'></p><h1>" + detail.Name + "</h1><p>£" + price.toFixed(2) + "</p><p>" + detail.Description + "</p><p>ID: " + detail.ID + "</p>";
+  section.appendChild(basketButton);
+  basketButton.innerHTML = "Add to Basket";
+  basketButtonFunc(detail);
 }
 
-
+window.addEventListener("load", function(){
+    updateBasketNumber();
+  });
 window.addEventListener("load", loadItems);

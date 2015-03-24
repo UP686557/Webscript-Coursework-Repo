@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="CSS/style.css">
     <link rel="stylesheet" type="text/css" href="CSS/searchbar.css">
     <link rel="stylesheet" type="text/css" href="CSS/navigation.css">
+    <link rel="stylesheet" type="text/css" href="CSS/basketPage.css">
+
     <meta charset="UTF-8">
   </head>
 
@@ -12,15 +14,17 @@
     <header>
       <?php include 'navigationBar.php' ?>
     </header>
-    <article>
-      <h2>Basket</h2>
-      <section id=basket>
+    <article id="basketArticle">
 
-      </section>
+
     </article>
     <?php include 'footer.php' ?>
   </body>
   <script language="JavaScript" type="text/javascript" src="../javascript/basketStorageManager.js"></script>
   <script language="JavaScript" type="text/javascript" src="../javascript/basketSimpleManager.js"></script>
   <script language="JavaScript" type="text/javascript" src="../javascript/basketSetup.js"></script>
+  <script language="JavaScript" type="text/javascript" src="../javascript/displayBasket.js"></script>
+  <script language="JavaScript" type="text/javascript" src="../javascript/ajaxSearch.js"></script>
+  <script language="JavaScript" type="text/javascript" src="../javascript/sharedJS.js"></script>
+
 </html>

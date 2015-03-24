@@ -16,14 +16,12 @@ var clicked = function(e) {
 		JSON.parse(e.currentTarget.dataset.detail),
 		1
 	);
+	Alert.render("Added To Basket", "<p>Product: " + detail.Name + "</p><p>Quantity: " + detail.quantity + "</p>");
+
 }
 
-var buttons = document.querySelectorAll("section.homeItem");
-
-for (var b=buttons.length-1; b>=0; b--) {
-  buttons[b].addEventListener('click', test);
-}
-
-function test(){
-	alert("test working");
+function basketButtonFunc(detail){
+	var basketButton = document.getElementById("basketButton");
+	basketButton.addEventListener('click',clicked
+			);
 }

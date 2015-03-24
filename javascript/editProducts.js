@@ -28,7 +28,7 @@ function addProduct(){
     document.getElementById("addForm").reset();
   }
   else{
-    Alert.render("Enter Fields", "Please enter values into the add product fields.")
+    Alert.render("Enter Fields", "Please enter values into the add product fields.");
   }
 }
 
@@ -45,7 +45,7 @@ function removeProduct(){
     document.getElementById("removeForm").reset();
   }
   else{
-    Alert.render("Enter Fields", "Please enter values into the remove product fields.")
+    Alert.render("Enter Fields", "Please enter values into the remove product fields.");
   }
 }
 
@@ -67,7 +67,7 @@ function updateProduct(){
     document.getElementById("updateForm").reset();
   }
   else{
-    Alert.render("Enter Fields", "Please enter values into the update product fields.")
+    Alert.render("Enter Fields", "Please enter values into the update product fields.");
   }
 }
 
@@ -79,7 +79,8 @@ function display(){
       if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
         var response = xmlhttp.responseText;
         var decodeResponse = JSON.parse(response);
-        var output = "<table><tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Price</th></tr>";
+        var output = "<input type=text id=adminSearch placeholder='Search Items...'><input type=submit id=adminSearchButton value=Search><table><tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Price</th></tr>";
+
 
         for(var i=0; i<decodeResponse.length; i++){
           var price = parseFloat(decodeResponse[i].Price);

@@ -14,7 +14,7 @@
 		</li>
 		<li id="search">
 			<form id="searchForm">
-				<input placeholder="Search..." id="searchBox" type="search" autocomplete="off" required>
+				<input placeholder="Search..." id="searchBox" type="search" autocomplete="off" required autofocus>
 				<button id="searchButton">Search</button>
 				<div id="searchSuggestion"></div>
 			</form>

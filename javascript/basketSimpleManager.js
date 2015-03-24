@@ -12,5 +12,4 @@ var countItems = function (e) {
         basket[e.detail.name] = current;
     }
 
-    console.log(basket);
 };

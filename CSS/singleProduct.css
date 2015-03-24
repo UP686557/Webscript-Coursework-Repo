@@ -1,0 +1,13 @@
+.productPhoto{
+  height:125px;
+  width:auto;
+  margin-right:30px;
+  margin-top:auto;
+  margin-bottom:auto;
+  display:block;
+  float:left;
+}
+
+.productAttributes{
+  float:left;
+}
