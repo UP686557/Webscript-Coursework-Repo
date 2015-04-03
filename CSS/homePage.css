@@ -44,3 +44,7 @@ section.homeItem:hover > .resultsName{
   margin-right:auto;
   display:block;
 }
+
+#outOfStock{
+  color:red;
+}

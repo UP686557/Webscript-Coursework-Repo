@@ -26,7 +26,7 @@
       <section id="add">
         <fieldset class="fieldSet">
           <legend>Add</legend>
-          <form id="addForm">
+          <form id="addProductForm">
             <p><label>Name:* </label><input type=text name=productName id="addProductName" placeholder="Product Name..." required></p>
             <p><label>Price:* </label><input type=number step="any" name=productPrice id="addProductPrice" placeholder="Price..." required></p>
             <p><label>Quantity:* </label><input type=number name=productQuantity id="addProductQuantity"placeholder="Quantity..." required></p>
@@ -41,7 +41,7 @@
       <section id="remove">
         <fieldset class="fieldSet">
           <legend>Remove</legend>
-          <form id="removeForm">
+          <form id="removeProductForm">
             <p>Enter the ID of the product you wish to remove from the database and comfirm this action with the "Remove Product" button.</p>
             <p><label>ID:* </label><input type=text name=productID id="removeProductID" placeholder="Product ID..." required></p>
           </form>
@@ -53,9 +53,9 @@
       <section id="update">
         <fieldset class="fieldSet">
           <legend>Update</legend>
-          <form id="updateForm">
+          <form id="updateProductForm">
             <p><label>ID:* </label><input type=text id=updateProductID placeholder="Product ID..." required></p>
-            <p>Enter the id of the product you wish to edit, and the new details following.</p>
+            <p>Enter the id of the product you wish to edit, and the new details following. Not all fields need to be full.</p>
             <p><label>Name: </label><input type=text id=updateProductName placeholder="Product Name..."></p>
             <p><label>Quantity: </label><input type=number id=updateProductQuantity placeholder="Quantity..."></p>
             <p><label>Price: </label><input type=text id=updateProductPrice placeholder="Price..."></p>
@@ -72,14 +72,15 @@
 
     </section>
 
+    <input type=text id=adminSearchBox placeholder='Search Items...'><input type=submit id=adminSearchButton value=Search>
     <section id="products">
     </section>
   </article>
   <?php include '../footer.php' ?>
 
-    <script language="JavaScript" type="text/javascript" src="../javascript/editProducts.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../javascript/Administration/editProducts.js"></script>
     <script language="JavaScript" type="text/javascript" src="../javascript/customAlert.js"></script>
-    <script language="JavaScript" type="text/javascript" src="../javascript/adminSearch.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../javascript/Administration/adminSearch.js"></script>
 
 </body>
 

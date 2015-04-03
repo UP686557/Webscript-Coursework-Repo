@@ -1,7 +1,7 @@
 var homeSection = document.getElementById('homeSection');
 
 function loadItems(){
-  var xmlhttp = getXmlHttpRequestObject();
+  var xmlhttp = new XMLHttpRequest();
   if(xmlhttp){
     xmlhttp.onreadystatechange = function(){
       if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
@@ -31,46 +31,7 @@ function displayItems(results){
   }
 }
 
-
-searchButton = document.getElementById("searchButton");
 searchBox = document.getElementById('searchBox');
-
-searchButton.addEventListener("click", searchItem);
-
-
-
-function searchItem(e){
-  e.preventDefault();
-  searchString = searchBox.value;
-  article = document.getElementById("homeSection");
-  article.innerHTML = '<p>You searched for: "' + searchString + '"</p>';
-  var xmlhttp = getXmlHttpRequestObject();
-  var string = '';
-  if(xmlhttp){
-    xmlhttp.onreadystatechange = function(){
-      if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-        var response = JSON.parse(xmlhttp.responseText);
-        for(var i=0; i<response.length; i++){
-          var price = parseFloat(response[i].Price);
-          var section = document.createElement("section");
-          section.classList.add("searchResult");
-          section.dataset.detail = JSON.stringify(response[i]);
-          article.appendChild(section);
-          section.innerHTML += '<p class="photo"><img src="' + response[i].Photo + '"></p><section><h1 class="name">' + response[i].Name + '</h1><p class="price">£' + price.toFixed(2) + '</p><p class="description">' + response[i].Description + '</p><p class="productID">ID: ' + response[i].ID + '</p><p class="quantity">Quantity: ' + response[i].Quantity + '</p></section>';
-
-        }
-        var items = document.querySelectorAll(".searchResult");
-        for(i=0; i<items.length; i++){
-          items[i].addEventListener("click", selectedProduct);
-        }
-      }
-    };
-    xmlhttp.open("POST", "search.php?search=" + searchString, false);
-    xmlhttp.send(null);
-  }
-}
-
-
 
 
 function selectedProduct(event){
@@ -81,15 +42,44 @@ function selectedProduct(event){
   var price = parseFloat(detail.Price);
   var section = document.createElement("section");
 
-  var basketButton = document.createElement("button");
-  basketButton.dataset.detail = JSON.stringify(detail);
-  basketButton.setAttribute("id","basketButton");
-  section.classList.add("productAttributes");
-  homeSection.appendChild(section);
-  section.innerHTML = "<a href='../'>back</a><p class='photo'><img class='productPhoto' src='" + detail.Photo + "'></p><h1>" + detail.Name + "</h1><p>£" + price.toFixed(2) + "</p><p>" + detail.Description + "</p><p>ID: " + detail.ID + "</p>";
-  section.appendChild(basketButton);
-  basketButton.innerHTML = "Add to Basket";
-  basketButtonFunc(detail);
+  if(detail.Quantity != "0"){
+    var newBasketButton = document.createElement("button");
+    newBasketButton.dataset.detail = JSON.stringify(detail);
+    newBasketButton.setAttribute("id","basketButton");
+    section.classList.add("productAttributes");
+    homeSection.appendChild(section);
+    section.innerHTML = "<a href='../'>back</a><p class='photo'><img class='productPhoto' src='" + detail.Photo + "'></p><h1>" + detail.Name + "</h1><p>£" + price.toFixed(2) + "</p><p>" + detail.Description + "</p>";
+    section.appendChild(newBasketButton);
+    newBasketButton.innerHTML = "Add to Basket";
+
+    var quantityInput = document.createElement('input');
+    quantityInput.type = "number";
+    quantityInput.value = "1";
+    quantityInput.setAttribute("id", "productQuantity");
+    section.appendChild(quantityInput);
+
+
+    title = document.getElementById("title");
+    title.innerHTML = detail.Name;
+
+    var basketButton = document.getElementById("basketButton");
+    basketButton.addEventListener('click', clicked);
+    basketButton.addEventListener('click', updateBasketNumber);
+
+  }
+  else{
+    section.classList.add("productAttributes");
+    homeSection.appendChild(section);
+    section.innerHTML = "<a href='../'>back</a><p class='photo'><img class='productPhoto' src='" + detail.Photo + "'></p><h1>" + detail.Name + "</h1><p>£" + price.toFixed(2) + "</p><p>" + detail.Description + "</p>";
+
+    title = document.getElementById("title");
+    title.innerHTML = detail.Name;
+
+    noStock = document.createElement("p");
+    noStock.setAttribute("id", "outOfStock");
+    section.appendChild(noStock);
+    noStock.innerHTML = "Out of Stock";
+  }
 }
 
 window.addEventListener("load", function(){

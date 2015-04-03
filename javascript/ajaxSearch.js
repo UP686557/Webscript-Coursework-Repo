@@ -2,26 +2,15 @@ var searchBox = document.getElementById("searchBox");
 var searchButton = document.getElementById("searchButton");
 
 
-function getXmlHttpRequestObject(){
-  if(window.XMLHttpRequest){
-    return new XMLHttpRequest();
-  }
-  else if (window.ActiveXObject){
-    return new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  else{
-    alert("Your browser does not support AJAX");
-  }
-}
 
-function ajaxSearch(){
+function ajaxSearch(event){
   var str = escape(document.getElementById('searchBox').value);
-  var search = getXmlHttpRequestObject();
+  var search = new XMLHttpRequest();
   if(str != ''){
     if(search){
       search.onreadystatechange = function(){
         if(search.readyState === 4 && search.status === 200){
-          displaySuggestions(JSON.parse(search.responseText));
+          displaySuggestions(event, JSON.parse(search.responseText));
         }
       };
       search.open("GET", '../searchSuggest.php?search=' + str, true);
@@ -33,7 +22,7 @@ function ajaxSearch(){
   }
 }
 
-function displaySuggestions(results){
+function displaySuggestions(event, results){
   var ss = document.getElementById("searchSuggestion");
   string = '';
   ss.innerHTML = '';
@@ -41,17 +30,20 @@ function displaySuggestions(results){
     string += '<div class="searchItem">' + results[i].Name + '</div>';
   }
   ss.innerHTML = string;
-  ajaxResult = document.getElementsByClassName("searchItem");
+
+  ajaxResult = document.querySelectorAll(".searchItem");
   for(i=0; i<ajaxResult.length; i++){
-    ajaxResult[i].addEventListener("click", function(){
-      setSearch(ajaxResult[i].value);
+    ajaxResult[i].addEventListener("click", function(event){
+      setSearch(event, event.currentTarget.innerHTML);
     });
   }
 }
 
-function setSearch(result){
-  document.getElementById("searchBox").innerHTML = result;
+function setSearch(event, result){
+  var searchBox = document.getElementById("searchBox");
+  searchBox.innerHTML = result;
   document.getElementById("searchSuggestion").innerHTML = "";
+  searchItem(event);
 }
 
 
@@ -65,9 +57,5 @@ searchBox.addEventListener('click', function(){
 
 
 window.addEventListener('click', function(){
-  document.getElementById('searchSuggestion').innerHTML = '';
-  });
-
-
-
-  
+ document.getElementById('searchSuggestion').innerHTML = '';
+ });

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Home</title>
+		<title id="title">Home</title>
 		<link rel="stylesheet" type="text/css" href="CSS/style.css">
 		<link rel="stylesheet" type="text/css" href="CSS/searchbar.css">
 		<link rel="stylesheet" type="text/css" href="CSS/navigation.css">
@@ -24,6 +24,7 @@
 	    <div id="dialogFoot"></div>
 	  </div>
 
+
 		<article id="homeSection">
 			<h1>Why not try these products?</h1>
 		</article>
@@ -34,9 +35,9 @@
 
 		<script language="JavaScript" type="text/javascript" src="../javascript/homeDisplay.js"></script>
 		<script language="JavaScript" type="text/javascript" src="../javascript/ajaxSearch.js"></script>
-		<script language="JavaScript" type="text/javascript" src="../javascript/basketStorageManager.js"></script>
-		<script language="JavaScript" type="text/javascript" src="../javascript/basketSimpleManager.js"></script>
-		<script language="JavaScript" type="text/javascript" src="../javascript/basketSetup.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../javascript/Basket/basketStorageManager.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../javascript/Basket/basketSimpleManager.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../javascript/Basket/basketSetup.js"></script>
 		<script language="JavaScript" type="text/javascript" src="../javascript/customAlert.js"></script>
 		<script language="JavaScript" type="text/javascript" src="../javascript/sharedJS.js"></script>
 

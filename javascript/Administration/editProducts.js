@@ -1,19 +1,8 @@
-
 var xmlhttp, addButton, removeButton, updataButton;
 
-function getXmlHttpRequest(){
-  if (window.XMLHttpRequest)
-  {
-    xmlhttp=new XMLHttpRequest();
-  }
-  else
-  {
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-}
 
 function addProduct(){
-  getXmlHttpRequest();
+  var xmlhttp = new XMLHttpRequest();
   var productName = document.getElementById("addProductName");
   var productDescription = document.getElementById("addProductDescription");
   var productQuantity = document.getElementById("addProductQuantity");
@@ -25,7 +14,7 @@ function addProduct(){
     xmlhttp.send();
 
     Alert.render("Product Added", xmlhttp.responseText);
-    document.getElementById("addForm").reset();
+    document.getElementById("addProductForm").reset();
   }
   else{
     Alert.render("Enter Fields", "Please enter values into the add product fields.");
@@ -33,7 +22,7 @@ function addProduct(){
 }
 
 function removeProduct(){
-  getXmlHttpRequest();
+  var xmlhttp = new XMLHttpRequest();
   var productID = document.getElementById("removeProductID");
 
   if(productID.value != ""){
@@ -42,7 +31,7 @@ function removeProduct(){
     xmlhttp.send();
 
     Alert.render("Product Removed", xmlhttp.responseText);
-    document.getElementById("removeForm").reset();
+    document.getElementById("removeProductForm").reset();
   }
   else{
     Alert.render("Enter Fields", "Please enter values into the remove product fields.");
@@ -50,7 +39,7 @@ function removeProduct(){
 }
 
 function updateProduct(){
-  getXmlHttpRequest();
+  var xmlhttp = new XMLHttpRequest();
   var productID = document.getElementById("updateProductID").value;
   var productName = document.getElementById("updateProductName").value;
   var productDescription = document.getElementById("updateProductDescription").value;
@@ -64,7 +53,7 @@ function updateProduct(){
     xmlhttp.send();
 
     Alert.render("Product Updated", xmlhttp.responseText);
-    document.getElementById("updateForm").reset();
+    document.getElementById("updateProductForm").reset();
   }
   else{
     Alert.render("Enter Fields", "Please enter values into the update product fields.");
@@ -72,14 +61,14 @@ function updateProduct(){
 }
 
 function display(){
-  getXmlHttpRequest();
+  var xmlhttp = new XMLHttpRequest();
   var tableSection = document.getElementById("products");
   if(xmlhttp){
     xmlhttp.onreadystatechange = function(){
       if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
         var response = xmlhttp.responseText;
         var decodeResponse = JSON.parse(response);
-        var output = "<input type=text id=adminSearch placeholder='Search Items...'><input type=submit id=adminSearchButton value=Search><table><tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Price</th></tr>";
+        var output = "<table><tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Price</th></tr>";
 
 
         for(var i=0; i<decodeResponse.length; i++){
