@@ -19,6 +19,8 @@
   </div>
 
   <p><a href="../">to index</a></p>
+  <p id='customerAdmin'>Customers</p>
+
   <article class="adminSection">
     <h1>Administration</h1>
 

@@ -1,4 +1,4 @@
-basketArticle = document.getElementById("homeSection");
+basketArticle = document.getElementById("dynamicArticle");
 
 function displayCheckout(){
   basketArticle.setAttribute("id", "checkout");
@@ -6,6 +6,7 @@ function displayCheckout(){
   detailsSection = document.createElement("section");
   detailsSection.setAttribute("id", "details")
   basketArticle.appendChild(detailsSection);
+
 
   string = '<form id="addCustomerForm">' +
             '<h1>Personal Details</h1>' +
@@ -19,12 +20,48 @@ function displayCheckout(){
             '<label>County*</label><input id="county" type="text" name="county">' +
             '<label>Post Code*</label><input id="postCode" type="text" name="postCode">' +
             '</form>' +
-            '<button id="paymentButton">Proceed tp Payment</button>';
+            '<button id="paymentButton">Proceed to Payment</button>';
   detailsSection.innerHTML = string;
 
   paymentButton = document.getElementById('paymentButton');
   paymentButton.addEventListener('click', paymentPage);
   miniBasket();
+
+}
+
+function paymentPage(){
+  var xmlhttp = new XMLHttpRequest();
+  var firstName = document.getElementById("firstName");
+  var surname = document.getElementById("surname");
+  var email = document.getElementById("email");
+  var phoneNumber = document.getElementById("phoneNumber");
+  var address = document.getElementById("address");
+  var town = document.getElementById("town");
+  var county = document.getElementById("county");
+  var postCode = document.getElementById("postCode");
+  if(firstName.value!="" && surname.value!="" && email.value!="" && phoneNumber.value!="" && address.value!="" && town.value!="" && postCode.value!=""){
+    customerDetails = {FirstName:firstName.value, Surname:surname.value, Email:email.value, PhoneNumber:phoneNumber.value, Address:address.value, Town:town.value, County:county.value, PostCode: postCode.value};
+    localStorage.setItem("customer", JSON.stringify(customerDetails));
+
+    string = '<form>' +
+              '<h1>Payment</h1>' +
+              '<label>Card Holder Name*</label><input type="text">' +
+              '<label>Card Number*</label><input type="date">' +
+              '<label>Expiry Date*</label><input type="date">' +
+              '<label>Security Code*</label><input type="text">' +
+              '</form>' +
+              '<button id="confirmPayment">Confirm</button>';
+    detailsSection.innerHTML = string;
+
+
+    var stateObject = {Content : basketArticle.innerHTML, Title:title.innerHTML};
+    updateContent(stateObject);
+    window.history.pushState(stateObject, "", "Payment");
+  }
+  else{
+    Alert.render("Enter Fields", "Please enter values into the provided textboxes fields.");
+  }
+
 }
 
 function miniBasket(){
@@ -40,45 +77,23 @@ function miniBasket(){
   string = '<h1 id="basketSummaryHeading">Basket Summary</h1>';
   for(var i in jsonBasket){
     quantityPrice = JSON.parse(jsonBasket[i].Price) * JSON.parse(jsonBasket[i].quantity);
-    string += "<section class='miniBasketItem'><p class='checkoutPhoto'><img src='" + jsonBasket[i].Photo + "'><section class='miniBasketDetails'></p><p class='checkoutName'>" + jsonBasket[i].Name + "</p><p>Price: £" + parseFloat(jsonBasket[i].Price).toFixed(2) + "</p><p>Quantity: " + jsonBasket[i].quantity + "</p><p>Sub Total: £" + parseFloat(quantityPrice).toFixed(2) + "</p></section></section>";
+    string += "<section class='miniBasketItem'><p class='checkoutPhoto'><img src='" + jsonBasket[i].Photo + "'></p><section class='miniBasketDetails'><p class='checkoutName'>Product: " + jsonBasket[i].Name + "</p><p>Price: £" + parseFloat(jsonBasket[i].Price).toFixed(2) + "</p><p>Quantity: " + jsonBasket[i].quantity + "</p><p>Sub Total: £" + parseFloat(quantityPrice).toFixed(2) + "</p></section></section>";
     totalPrice += quantityPrice;
   }
 
-  miniBasketSection.innerHTML = string + "<p>Total Price: £" + parseFloat(totalPrice).toFixed(2) + "</p>";
-}
+  miniBasketSection.innerHTML = string + "<p id='miniBasketTotal'>Total: £" + parseFloat(totalPrice).toFixed(2) + "</p><p><button id='editMiniBasket'>Edit</button></p>";
 
+  editMiniBasket = document.getElementById("editMiniBasket");
+  editMiniBasket.addEventListener("click", function(){
+    basketArticle.setAttribute("id", "dynamicArticle");
+    displayBasket();
+  });
 
-function paymentPage(){
-  //Sends data to the customer database from the customer details section and changes the page to the payment details
-  var xmlhttp = new XMLHttpRequest();
-  var firstName = document.getElementById("firstName");
-  var surname = document.getElementById("surname");
-  var email = document.getElementById("email");
-  var phoneNumber = document.getElementById("phoneNumber");
-  var address = document.getElementById("address");
-  var town = document.getElementById("town");
-  var county = document.getElementById("county");
-  var postCode = document.getElementById("postCode");
-  if(firstName.value!="" && surname.value!="" && email.value!="" && phoneNumber.value!="" && address.value!="" && town.value!="" && postCode.value!=""){
-    string = '<form>' +
-              '<h1>Payment</h1>' +
-              '<label>Card Holder Name*</label><input type="text">' +
-              '<label>Card Number*</label><input type="date">' +
-              '<label>Expiry Date*</label><input type="date">' +
-              '<label>Security Code*</label><input type="text">' +
-              '</form>' +
-              '<button id="confirmPayment">Confirm</button>';
-    detailsSection.innerHTML = string;
+  var stateObj = {Content : basketArticle.innerHTML, Basket : jsonBasket, Title : title.innerHTML};
+  window.history.pushState(stateObj, "", "Checkout");
 
-    var url = "addCustomer.php?firstName=" + firstName.value + "&surname=" + surname.value + "&email=" + email.value + "&phoneNumber=" + phoneNumber.value + "&address=" + address.value + "&town=" + town.value + "&county=" + county.value + "&postCode=" + postCode.value;
-    xmlhttp.open("GET", url, false);
-    xmlhttp.send();
-
-    response = xmlhttp.responseText;
-    Alert.render("Customer Added", response);
-  }
-  else{
-    Alert.render("Enter Fields", "Please enter values into the provided textboxes fields.");
-  }
-
+  window.addEventListener('popstate', function(event) {
+    basketArticle.setAttribute("id", "dynamicArticle");
+    updateContent(event.state);
+  });
 }

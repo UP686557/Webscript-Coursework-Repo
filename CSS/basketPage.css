@@ -1,19 +1,25 @@
 .basketItem{
   border-bottom: 1px solid black;
+  border-top:1px solid #F0F0F0;
+  border-left:1px solid #F0F0F0;
+  border-right:1px solid #F0F0F0;
+  padding-bottom:20px;
 }
 
-h2{
+#basketHeading{
   border-bottom: 1px solid black;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
-.photo{
+.basketItem .photo{
   float:left;
   height:100px;
   width: 125px;
   margin-right:30px;
 }
 
-.photo img{
+.basketItem .photo img{
   height:75px;
   width:auto;
   margin-left:auto;
@@ -23,12 +29,12 @@ h2{
   display:block;
 }
 
-p{
+.basketItem p{
   font-size:9pt;
   margin-bottom:-7px;
 }
 
-.itemName{
+.basketItem .itemName{
   font-size:11pt;
   font-weight:bold;
   margin-bottom:0px;
@@ -39,7 +45,7 @@ p{
   margin-bottom:30px;
 }
 
-.basketQuantity{
+.basketItem .basketQuantity{
   width: 30px;
 }
 
@@ -141,7 +147,7 @@ label{
   -webkit-flex-direction: column;
   width:70%;
   border-left: 1px dashed black;
-  padding: 0px 10px 0px 50px;
+  padding: 0px 10px 0px 20px;
 }
 
 .miniBasketItem{
@@ -150,6 +156,7 @@ label{
   flex-direction:row;
   -webkit-flex-direction: row;
   border-bottom: 1px solid black;
+  height:110px;
 }
 
 .miniBasketDetails{
@@ -157,6 +164,18 @@ label{
   display:-webkit-flex;
   flex-direction:column;
   -webkit-flex-direction: column;
+  padding:0px;
+  height:100px;
+}
+
+.miniBasketDetails p{
+  font-size: 9pt;
+  margin-bottom: 5px;
+  margin-top:5px;
+}
+
+#miniBasketTotal{
+  margin-left: 155px;
 }
 
 .checkoutPhoto{
@@ -180,7 +199,7 @@ label{
   border-bottom: 1px solid black;
 }
 
-#paymentButton, #confirmPayment{
+#paymentButton, #confirmPayment, #editMiniBasket{
   height: 30px;
   width: 100%;
   border:2px solid #207cca;
@@ -188,8 +207,12 @@ label{
   color:#fafafa;
 }
 
-#paymentButton:hover, #confirmPayment:hover{
+#paymentButton:hover, #confirmPayment:hover, #editMiniBasket:hover{
   background-color:#fafafa;
   color:#207cca;
   cursor:pointer;
+}
+
+#editMiniBasket{
+  margin-top: 20px;
 }

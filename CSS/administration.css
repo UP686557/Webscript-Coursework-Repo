@@ -5,6 +5,14 @@
   background-color:#E0E0E0;
 }
 
+#customerAdmin{
+  cursor:pointer;
+}
+
+#customerAdmin:hover{
+  text-decoration:underline;
+}
+
 /*Admin input*/
 label{
   text-align:right;

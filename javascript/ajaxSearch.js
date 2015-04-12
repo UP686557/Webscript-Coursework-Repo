@@ -34,17 +34,15 @@ function displaySuggestions(event, results){
   ajaxResult = document.querySelectorAll(".searchItem");
   for(i=0; i<ajaxResult.length; i++){
     ajaxResult[i].addEventListener("click", function(event){
-      setSearch(event, event.currentTarget.innerHTML);
+      result = event.currentTarget.innerHTML;
+
+      searchBox.value = result;
+      document.getElementById("searchSuggestion").innerHTML = "";
+      searchItem(event);
     });
   }
 }
 
-function setSearch(event, result){
-  var searchBox = document.getElementById("searchBox");
-  searchBox.innerHTML = result;
-  document.getElementById("searchSuggestion").innerHTML = "";
-  searchItem(event);
-}
 
 
 searchBox.addEventListener('keyup', ajaxSearch);

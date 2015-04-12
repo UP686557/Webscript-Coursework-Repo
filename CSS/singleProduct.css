@@ -1,6 +1,6 @@
 .photo{
   float:left;
-  height:200px;
+  height:auto;
   max-height: 300px;
   width: 300px;
   margin-right:0px;
@@ -35,4 +35,39 @@
   background-color:#fafafa;
   color:#207cca;
   cursor:pointer;
+}
+
+.productAttributes{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+}
+
+#singleProductDetails{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  width:100%;
+  padding-left: 30px;
+}
+
+#singleProductDetails p{
+  margin: 5px 0 5px 0;
+}
+
+#singleProductDetails div{
+  margin: 5px 0 5px 0;
+}
+
+#singleProductDetails h1{
+  border-bottom:1px solid black;
+  margin: 5px 0 5px 0;
+  font-size: 25pt;
+  color:#16578D;
+}
+
+#singleProductPrice{
+  color: #AB0000;
 }

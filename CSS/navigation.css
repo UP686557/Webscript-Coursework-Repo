@@ -94,7 +94,11 @@ header>nav>ul>li>ul>li>a:active, header>nav>ul>li>ul>li>a:hover{
 /*Basket*/
 #basket{
   float:right;
-  width: 50px;
+  width: 70px;
+}
+
+#basket:hover{
+  cursor:pointer;
 }
 
 #numItems{

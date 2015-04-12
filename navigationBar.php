@@ -10,7 +10,7 @@
 			</ul>
 		</li>
 		<li id="basket">
-			<a href="../basket.php"><img src="../Images/basket.png"><div id="numItems"></div></a>
+			<a><img src="../Images/basket.png"><div id="numItems"></div></a>
 		</li>
 		<li id="search">
 			<form id="searchForm">

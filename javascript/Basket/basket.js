@@ -1,17 +1,19 @@
-basketArticle = document.getElementById("homeSection");
 
 function displayBasket(){
+  basketArticle = document.getElementById("dynamicArticle");
+
   basketArticle.innerHTML = "";
-  var basketStorage = localStorage.getItem("basket"); //This is in json format as a string so you need to parse it
+  basketStorage = localStorage.getItem("basket"); //This is in json format as a string so you need to parse it
   jsonBasket = JSON.parse(basketStorage); //This is the parsed string as objects
                                           //Gives you one basket object with three fruit objects inside
   heading = document.createElement("h2");
+  heading.setAttribute("id", "basketHeading");
   basketArticle.appendChild(heading);
 
+  title.innerHTML = "Basket";
 
-
-  var totalItems = 0;
-  var totalPrice = 0;
+  totalItems = 0;
+  totalPrice = 0;
   for (var prop in jsonBasket){   //for looping through the items in the overall basket object
     if(jsonBasket.hasOwnProperty(prop)){ //prop will be each individual fruit object throughtout the loop. This checks if the object inside the main basket object has it's own individual properties
       quantityPrice = JSON.parse(jsonBasket[prop].Price) * JSON.parse(jsonBasket[prop].quantity);
@@ -19,7 +21,7 @@ function displayBasket(){
       section = document.createElement("section");
       section.classList.add("basketItem");
       basketArticle.appendChild(section);
-      section.innerHTML = "<p class='photo'><img src='" + jsonBasket[prop].Photo + "'></p><p class='itemName'>" + jsonBasket[prop].Name + "</p><p>Price: £" + parseFloat(jsonBasket[prop].Price).toFixed(2) + "</p><p>Quantity: <input class='basketQuantity' type='number' value='" + jsonBasket[prop].quantity + "'></p><p>Sub Total: £" + parseFloat(quantityPrice).toFixed(2) + "</p>";
+      section.innerHTML = "<p class='photo'><img src='" + jsonBasket[prop].Photo + "'></p><p class='itemName'>" + jsonBasket[prop].Name + "</p><p class='basketPrice'>Price: £" + parseFloat(jsonBasket[prop].Price).toFixed(2) + "</p><p class='quantityPara'>Quantity: <input class='basketQuantity' type='number' value='" + jsonBasket[prop].quantity + "' data-name='" + jsonBasket[prop].Name + "'></p><p class='basketSubTotal'>Sub Total: £" + parseFloat(quantityPrice).toFixed(2) + "</p>";
 
       removeButton = document.createElement("button");
       removeButton.dataset.name = jsonBasket[prop].Name;
@@ -33,6 +35,7 @@ function displayBasket(){
   }
 
   heading.innerHTML = "Basket: " + totalItems;
+
   if(totalItems == 0){
     basketSection = document.createElement("p");
     basketArticle.appendChild(basketSection);
@@ -55,33 +58,58 @@ function displayBasket(){
     checkoutButton.setAttribute("id", "checkoutButton");
     checkoutButton.innerHTML = "Checkout";
     basketArticle.appendChild(checkoutButton);
+
+    var stateObj = {Content : basketArticle.innerHTML, Basket : jsonBasket, Title : title.innerHTML};
+    window.history.pushState(stateObj, "", "Basket");
+
+    window.addEventListener('popstate', function(event) {
+      updateContent(event.state);
+    });
+
     checkoutButton.addEventListener('click', function(){
         displayCheckout();
       });
+
     updateBasketNumber();
     }
 
-    var clearButton = document.getElementById("clearBasket");
-    if(clearButton){
-      clearButton.addEventListener('click', function(){
-        localStorage.clear();
-        updateBasketNumber();
-        displayBasket();
-      });
-    }
+  var clearButton = document.getElementById("clearBasket");
+  if(clearButton){
+    clearButton.addEventListener('click', function(){
+      localStorage.clear();
+      updateBasketNumber();
+      displayBasket();
+    });
+  }
 
+  updateQuantity();
   setDeleteButtons();
 }
 
 
-function editQuantity(){
-  quantityInputs = document.querySelectorAll(".basketQuantity");
-  for(i=0; i<quantityInputs.length; i++){
-    quantityInputs[i].addEventListener('change', function(){
-      alert("number input changed");
+
+function updateQuantity(){
+  var quantityInputs = document.querySelectorAll(".basketQuantity");
+  var basketSubTotal = document.querySelectorAll(".basketSubTotal");
+
+  for(var i=0; i<quantityInputs.length; i++){
+    input = quantityInputs[i];
+    subtotal = basketSubTotal[i];
+
+    input.addEventListener('change', function(e){
+      basketStorage = localStorage.getItem("basket"); //gets the basket from local storage (string)
+      jsonBasket = JSON.parse(basketStorage); //changes the basket into an object from a string
+
+      var itemSubTotal = parseInt(this.value) * jsonBasket[e.currentTarget.dataset.name].Price;
+      subtotal.innerHTML = "Sub Total: £" + parseFloat(itemSubTotal).toFixed(2);
+      jsonBasket[e.currentTarget.dataset.name].quantity = this.value;
+      localStorage.setItem("basket", JSON.stringify(jsonBasket));
+      totalItems += this.value;
+      updateBasketNumber();
     });
   }
 }
+
 
 
 function setDeleteButtons(){
@@ -114,6 +142,5 @@ function updateBasketNumber(){
   basketIcon.innerHTML = totalItems;
 }
 
-
-//window.addEventListener("load", displayBasket); //function onload event.
-displayBasket();
+var loadBasketButton = document.getElementById("basket");
+loadBasketButton.addEventListener('click', displayBasket);

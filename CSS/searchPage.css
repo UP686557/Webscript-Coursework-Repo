@@ -5,6 +5,18 @@
   padding-bottom:5px;
   box-shadow:  0 8px 6px -7px black;
   overflow:auto;
+  display:flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  margin: 5px 0px 5px 0px;
+}
+
+.searchedProductDetails{
+  display:flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 .searchResult:hover{
@@ -17,7 +29,7 @@
   text-decoration:underline;
 }
 
-.searchResult .photo img{
+.searchResult .searchPhoto img{
   height:125px;
   width:auto;
   margin-left:auto;
@@ -27,7 +39,7 @@
   display:block;
 }
 
-.searchResult .photo{
+.searchResult .searchPhoto{
   float:left;
   height:100px;
   width: 250px;

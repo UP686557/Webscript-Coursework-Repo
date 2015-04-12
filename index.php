@@ -9,6 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="CSS/homePage.css">
 		<link rel="stylesheet" type="text/css" href="CSS/singleProduct.css">
 		<link rel="stylesheet" type="text/css" href="CSS/dialogBox.css">
+    <link rel="stylesheet" type="text/css" href="CSS/basketPage.css">
 
 		<meta charset="UTF-8">
 	</head>
@@ -24,12 +25,8 @@
 	    <div id="dialogFoot"></div>
 	  </div>
 
-
-		<article id="homeSection">
-			<h1>Why not try these products?</h1>
+		<article id="dynamicArticle">
 		</article>
-
-
 
 		<?php include 'footer.php' ?>
 
@@ -40,7 +37,8 @@
 		<script language="JavaScript" type="text/javascript" src="../javascript/Basket/basketSetup.js"></script>
 		<script language="JavaScript" type="text/javascript" src="../javascript/customAlert.js"></script>
 		<script language="JavaScript" type="text/javascript" src="../javascript/sharedJS.js"></script>
-
+	  <script language="JavaScript" type="text/javascript" src="../javascript/Basket/basket.js"></script>
+	  <script language="JavaScript" type="text/javascript" src="../javascript/Basket/checkout.js"></script>
 
 	</body>
 

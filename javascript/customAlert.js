@@ -10,7 +10,7 @@ function customAlert(){
     overlay.style.width = winW + "px";
 
     dialogBox.style.left = (winW/2) - (300/2)+"px";
-    dialogBox.style.top = "100px";
+    dialogBox.style.top = "150px";
     dialogBox.style.display = "block";
 
     var header = document.getElementById("dialogHead");

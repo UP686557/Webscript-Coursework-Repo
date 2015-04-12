@@ -1,5 +1,5 @@
 To set up the website you will need to do the following.
-Open phpmyadmin and copy the code from the file named "Product Table.txt".
+Open phpmyadmin and copy the code from the file named "SQL.txt".
 Execute this code which will product a new database and table with a few values already added.
 
 Run the code through a local server or upload it to server host.

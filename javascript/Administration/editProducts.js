@@ -60,7 +60,7 @@ function updateProduct(){
   }
 }
 
-function display(){
+function displayProducts(){
   var xmlhttp = new XMLHttpRequest();
   var tableSection = document.getElementById("products");
   if(xmlhttp){
@@ -101,18 +101,18 @@ function display(){
   }
 }
 
-window.addEventListener("load", display);
+window.addEventListener("load", displayProducts);
 
 
 addButton = document.getElementById("addButton");
 addButton.addEventListener("click", addProduct);
-addButton.addEventListener("click", display);
+addButton.addEventListener("click", displayProducts);
 
 removeButton = document.getElementById("removeButton");
 removeButton.addEventListener("click", removeProduct);
-removeButton.addEventListener("click", display);
+removeButton.addEventListener("click", displayProducts);
 
 
 updateButton = document.getElementById("updateButton");
 updateButton.addEventListener("click", updateProduct);
-updateButton.addEventListener("click", display);
+updateButton.addEventListener("click", displayProducts);
