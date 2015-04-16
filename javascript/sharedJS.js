@@ -20,6 +20,7 @@ searchButton.addEventListener("click", function(e){
 function searchItem(e){
   e.preventDefault();
   searchString = searchBox.value;
+  title.innerHTML = "Company Name | " + searchString;
   article = document.getElementById("dynamicArticle");
   article.innerHTML = '<p>You searched for: "' + searchString + '"</p>';
   article.innerHTML += "<p>Sort By: <select><option value='Name'>Name</option><option value='Price'>Price</option></p>";

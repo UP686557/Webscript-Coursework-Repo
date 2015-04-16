@@ -1,4 +1,3 @@
-var homeSection = document.getElementById('dynamicArticle');
 
 function loadItems(event){
   var xmlhttp = new XMLHttpRequest();
@@ -16,6 +15,7 @@ function loadItems(event){
 }
 
 function displayItems(results){
+  var homeSection = document.getElementById('dynamicArticle');
   homeSection.innerHTML = '<h1>Why not try these products?</h1>';
   for(var i=0; i<results.length; i++){
     var price = parseFloat(results[i].Price);
@@ -27,7 +27,7 @@ function displayItems(results){
 
   }
   title = document.getElementById("title");
-  var stateObject = {Content: homeSection.innerHTML, Title : title.innerHTML};
+  var stateObject = {Content: homeSection.innerHTML, Title : title.innerHTML, Section:"dynamicArticle"};
   updateContent(stateObject);
   window.history.pushState(stateObject, "Home", '');
 
@@ -39,6 +39,7 @@ searchBox = document.getElementById('searchBox');
 
 
 function selectedProduct(event){
+  var homeSection = document.getElementById('dynamicArticle');
   target = event.currentTarget;
   homeSection.innerHTML = "";
   detail = JSON.parse(target.dataset.detail);
@@ -76,6 +77,10 @@ function selectedProduct(event){
     subTotal.innerHTML = "Sub Total: £" + price.toFixed(2);
 
     quantityInput.addEventListener("change", function(){
+      if(this.value <= "0"){
+        // Alert.render("Invalid Value", "Please either: <ul><li>Eenter a value higher than 0</li><li>Use the red cross to delete the item from the basket.</li></ul>");
+        this.value = 1;
+      }
       subTotal.innerHTML = "Sub Total: £" + parseFloat(quantityInput.value * price).toFixed(2);
     });
   }
@@ -85,7 +90,7 @@ function selectedProduct(event){
   }
 
   title = document.getElementById("title");
-  title.innerHTML = detail.Name;
+  title.innerHTML = "Company Name | " + detail.Name;
 
   basketButton = document.getElementById("basketButton");
 
@@ -95,7 +100,7 @@ function selectedProduct(event){
   }
 
   detailName = detail.Name.split(' ').join('');
-  var stateObj = {Content : homeSection.innerHTML, "Product" : detail.Name, Title : title.innerHTML};
+  var stateObj = {Content : homeSection.innerHTML, "Product" : detail.Name, Title : title.innerHTML, Section:"dynamicArticle"};
   window.history.pushState(stateObj, "", detailName);
 
   window.addEventListener('popstate', function(event) {
@@ -109,6 +114,7 @@ function selectedProduct(event){
 
 function updateContent(stateObject) {
   if (stateObject){
+    homeSection = document.getElementById(stateObject.Section);
     homeSection.innerHTML = stateObject.Content;
     title.innerHTML = stateObject.Title;
 
@@ -117,6 +123,11 @@ function updateContent(stateObject) {
       for(i=0; i<items.length; i++){
         items[i].addEventListener("click", selectedProduct);
       }
+    }
+
+    if(stateObject.Title == "Company Name | Home"){
+      homeSection = document.getElementById('checkout');
+      // homeSection.setAttribute("id", "dynamicArticle");
     }
 
     checkoutButton = document.getElementById('checkoutButton');

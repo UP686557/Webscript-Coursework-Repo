@@ -7,6 +7,7 @@ function displayCheckout(){
   detailsSection.setAttribute("id", "details")
   basketArticle.appendChild(detailsSection);
 
+  title.innerHTML = "Company Name | Checkout";
 
   string = '<form id="addCustomerForm">' +
             '<h1>Personal Details</h1>' +
@@ -27,18 +28,33 @@ function displayCheckout(){
   paymentButton.addEventListener('click', paymentPage);
   miniBasket();
 
+  xmlhttp = new XMLHttpRequest();
+  firstName = document.getElementById("firstName");
+  surname = document.getElementById("surname");
+  email = document.getElementById("email");
+  phoneNumber = document.getElementById("phoneNumber");
+  address = document.getElementById("address");
+  town = document.getElementById("town");
+  county = document.getElementById("county");
+  postCode = document.getElementById("postCode");
+
+  customer = localStorage.getItem('customer');
+  jsonCustomer = JSON.parse(customer);
+  if(customer){
+    firstName.value = jsonCustomer.FirstName;
+    surname.value = jsonCustomer.Surname;
+    email.value = jsonCustomer.Email;
+    phoneNumber.value = jsonCustomer.PhoneNumber;
+    address.value = jsonCustomer.Address;
+    town.value = jsonCustomer.Town;
+    county.value = jsonCustomer.County;
+    postCode.value = jsonCustomer.PostCode;
+  }
 }
 
 function paymentPage(){
-  var xmlhttp = new XMLHttpRequest();
-  var firstName = document.getElementById("firstName");
-  var surname = document.getElementById("surname");
-  var email = document.getElementById("email");
-  var phoneNumber = document.getElementById("phoneNumber");
-  var address = document.getElementById("address");
-  var town = document.getElementById("town");
-  var county = document.getElementById("county");
-  var postCode = document.getElementById("postCode");
+  title.innerHTML = "Company Name | Payment";
+
   if(firstName.value!="" && surname.value!="" && email.value!="" && phoneNumber.value!="" && address.value!="" && town.value!="" && postCode.value!=""){
     customerDetails = {FirstName:firstName.value, Surname:surname.value, Email:email.value, PhoneNumber:phoneNumber.value, Address:address.value, Town:town.value, County:county.value, PostCode: postCode.value};
     localStorage.setItem("customer", JSON.stringify(customerDetails));
@@ -47,14 +63,28 @@ function paymentPage(){
               '<h1>Payment</h1>' +
               '<label>Card Holder Name*</label><input type="text">' +
               '<label>Card Number*</label><input type="date">' +
-              '<label>Expiry Date*</label><input type="date">' +
+              '<label>Expiry Date* DD/MM/YYYY</label><input type="date">' +
               '<label>Security Code*</label><input type="text">' +
               '</form>' +
               '<button id="confirmPayment">Confirm</button>';
     detailsSection.innerHTML = string;
 
 
-    var stateObject = {Content : basketArticle.innerHTML, Title:title.innerHTML};
+    confirmPayment = document.getElementById("confirmPayment");
+    confirmPayment.addEventListener('click', function(){
+      basketStorage = localStorage.getItem("basket");
+      jsonBasket = JSON.parse(basketStorage);
+
+      for(var prop in jsonBasket){
+        if(jsonBasket.hasOwnProperty(prop)){
+          jsonBasket[prop].Quantity = jsonBasket[prop].Quantity - jsonBasket[prop].quantity;
+        }
+        localStorage.setItem("basket", JSON.stringify(jsonBasket));
+        basketArticle.innerHTML = "Thank you for your purchase!";
+      }
+    });
+
+    var stateObject = {Content : basketArticle.innerHTML, Title: title.innerHTML};
     updateContent(stateObject);
     window.history.pushState(stateObject, "", "Payment");
   }
@@ -85,15 +115,21 @@ function miniBasket(){
 
   editMiniBasket = document.getElementById("editMiniBasket");
   editMiniBasket.addEventListener("click", function(){
+    basketArticle = document.getElementById("checkout");
     basketArticle.setAttribute("id", "dynamicArticle");
     displayBasket();
   });
 
-  var stateObj = {Content : basketArticle.innerHTML, Basket : jsonBasket, Title : title.innerHTML};
+  var stateObj = {Content : basketArticle.innerHTML, Basket : jsonBasket, Title :title.innerHTML, Section : "checkout"};
   window.history.pushState(stateObj, "", "Checkout");
 
   window.addEventListener('popstate', function(event) {
-    basketArticle.setAttribute("id", "dynamicArticle");
+    // if(checkoutButton){
+    //   basketArticle.setAttribute("id", "dynamicArticle");
+    // }
+    // else{
+    //   basketArticle.setAttribute("id", "checkout");
+    // }
     updateContent(event.state);
   });
 }

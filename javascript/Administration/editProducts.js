@@ -78,7 +78,7 @@ function displayProducts(){
                         "<td>" + decodeResponse[i].ID + "</td>" +
                         "<td>" + decodeResponse[i].Name + "</td>" +
                         "<td>" + decodeResponse[i].Description + "</td>" +
-                        "<td>" + decodeResponse[i].Quantity + "</td>" +
+                        "<td class='tableQuantity'>" + decodeResponse[i].Quantity + "</td>" +
                         "<td>£" + price.toFixed(2) + "</td>" +
                       "<tr>";
           }
@@ -87,13 +87,22 @@ function displayProducts(){
                         "<td class='tableAltColour'>" + decodeResponse[i].ID + "</td>" +
                         "<td class='tableAltColour'>" + decodeResponse[i].Name + "</td>" +
                         "<td class='tableAltColour'>" + decodeResponse[i].Description + "</td>" +
-                        "<td class='tableAltColour'>" + decodeResponse[i].Quantity + "</td>" +
+                        "<td class='tableAltColour tableQuantity'>" + decodeResponse[i].Quantity + "</td>" +
                         "<td class='tableAltColour'>£" + price.toFixed(2) + "</td>" +
                       "<tr>";
           }
+
         }
         output += "</table>";
         tableSection.innerHTML = output;
+
+        var lowQuantity = document.querySelectorAll(".tableQuantity");
+        for(var i=0; i<lowQuantity.length; i++){
+          if(lowQuantity[i].innerHTML < 10){
+              lowQuantity[i].style.background = "#CC0000";
+              lowQuantity[i].style.border = "1px solid #000000";
+          }
+        }
       }
     }
     xmlhttp.open("GET", "../Administration/display.php", false);
@@ -102,7 +111,6 @@ function displayProducts(){
 }
 
 window.addEventListener("load", displayProducts);
-
 
 addButton = document.getElementById("addButton");
 addButton.addEventListener("click", addProduct);

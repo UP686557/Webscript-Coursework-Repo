@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title id="title">Home</title>
+		<title id="title">Company Name | Home</title>
 		<link rel="stylesheet" type="text/css" href="CSS/style.css">
 		<link rel="stylesheet" type="text/css" href="CSS/searchbar.css">
 		<link rel="stylesheet" type="text/css" href="CSS/navigation.css">
@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="CSS/dialogBox.css">
     <link rel="stylesheet" type="text/css" href="CSS/basketPage.css">
 
+		<meta name="description" content="">
 		<meta charset="UTF-8">
 	</head>
 

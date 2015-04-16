@@ -10,7 +10,7 @@ function displayBasket(){
   heading.setAttribute("id", "basketHeading");
   basketArticle.appendChild(heading);
 
-  title.innerHTML = "Basket";
+  title.innerHTML = "Company Name | Basket";
 
   totalItems = 0;
   totalPrice = 0;
@@ -59,7 +59,7 @@ function displayBasket(){
     checkoutButton.innerHTML = "Checkout";
     basketArticle.appendChild(checkoutButton);
 
-    var stateObj = {Content : basketArticle.innerHTML, Basket : jsonBasket, Title : title.innerHTML};
+    var stateObj = {Content : basketArticle.innerHTML, Basket : jsonBasket, Title :  title.innerHTML, Section : "dynamicArticle"};
     window.history.pushState(stateObj, "", "Basket");
 
     window.addEventListener('popstate', function(event) {
@@ -97,15 +97,15 @@ function updateQuantity(){
     subtotal = basketSubTotal[i];
 
     input.addEventListener('change', function(e){
+      if(this.value <= "0"){
+        Alert.render("Invalid Value", "Please either: <ul><li>Eenter a value higher than 0</li><li>Use the red cross to delete the item from the basket.</li></ul>");
+        this.value = 1;
+      }
       basketStorage = localStorage.getItem("basket"); //gets the basket from local storage (string)
       jsonBasket = JSON.parse(basketStorage); //changes the basket into an object from a string
-
-      var itemSubTotal = parseInt(this.value) * jsonBasket[e.currentTarget.dataset.name].Price;
-      subtotal.innerHTML = "Sub Total: £" + parseFloat(itemSubTotal).toFixed(2);
       jsonBasket[e.currentTarget.dataset.name].quantity = this.value;
       localStorage.setItem("basket", JSON.stringify(jsonBasket));
-      totalItems += this.value;
-      updateBasketNumber();
+      displayBasket();
     });
   }
 }
@@ -128,19 +128,5 @@ function setDeleteButtons(){
     updateBasketNumber();
   }
 
-
-function updateBasketNumber(){
-  var basketStorage = localStorage.getItem("basket"); //This is in json format as a string so you need to parse it
-  jsonBasket = JSON.parse(basketStorage);
-  var totalItems = 0;
-
-  for (var i in jsonBasket){
-    totalItems += JSON.parse(jsonBasket[i].quantity);
-  }
-
-  basketIcon = document.getElementById("numItems");
-  basketIcon.innerHTML = totalItems;
-}
-
-var loadBasketButton = document.getElementById("basket");
-loadBasketButton.addEventListener('click', displayBasket);
+  var loadBasketButton = document.getElementById("basket");
+  loadBasketButton.addEventListener('click', displayBasket);

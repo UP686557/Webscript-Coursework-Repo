@@ -18,10 +18,10 @@
     <div id="dialogFoot"></div>
   </div>
 
-  <p><a href="../">to index</a></p>
   <p id='customerAdmin'>Customers</p>
+  <p id='productAdmin'><a href="../administration/">Products</a></p>
 
-  <article class="adminSection">
+  <article id="adminSection">
     <h1>Administration</h1>
 
     <section id="controls">
@@ -83,6 +83,7 @@
     <script language="JavaScript" type="text/javascript" src="../javascript/Administration/editProducts.js"></script>
     <script language="JavaScript" type="text/javascript" src="../javascript/customAlert.js"></script>
     <script language="JavaScript" type="text/javascript" src="../javascript/Administration/adminSearch.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../javascript/Administration/customersAdmin.js"></script>
 
 </body>
 

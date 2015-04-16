@@ -15,7 +15,7 @@ function adminSearch(){
     }
   }
   else{
-    display();
+    displayProducts();
   }
 }
 
@@ -34,7 +34,7 @@ function displayAdminSuggestions(results){
                     "<td>" + results[i].ID + "</td>" +
                     "<td>" + results[i].Name + "</td>" +
                     "<td>" + results[i].Description + "</td>" +
-                    "<td>" + results[i].Quantity + "</td>" +
+                    "<td class='tableQuantity'>" + results[i].Quantity + "</td>" +
                     "<td>£" + price.toFixed(2) + "</td>" +
                   "<tr>";
       }
@@ -43,7 +43,7 @@ function displayAdminSuggestions(results){
                     "<td class='tableAltColour'>" + results[i].ID + "</td>" +
                     "<td class='tableAltColour'>" + results[i].Name + "</td>" +
                     "<td class='tableAltColour'>" + results[i].Description + "</td>" +
-                    "<td class='tableAltColour'>" + results[i].Quantity + "</td>" +
+                    "<td class='tableAltColour tableQuantity'>" + results[i].Quantity + "</td>" +
                     "<td class='tableAltColour'>£" + price.toFixed(2) + "</td>" +
                   "<tr>";
       }
@@ -53,6 +53,14 @@ function displayAdminSuggestions(results){
     string = '<p>no matches found</p>';
   }
     tableArea.innerHTML = string;
+
+    var lowQuantity = document.querySelectorAll(".tableQuantity");
+    for(var i=0; i<lowQuantity.length; i++){
+      if(lowQuantity[i].innerHTML < 10){
+          lowQuantity[i].style.background = "#CC0000";
+          lowQuantity[i].style.border = "1px solid #000000";
+      }
+    }
   }
 
 
