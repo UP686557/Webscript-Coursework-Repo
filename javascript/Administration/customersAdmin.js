@@ -1,24 +1,39 @@
+// Get button to change to customer section
 var customersButton = document.getElementById("customerAdmin");
 customersButton.addEventListener('click', customerSection);
 
+// Get admin section for dynamic content
 var adminSection = document.getElementById("adminSection");
+
+// Get title
+var title = document.getElementById("title");
+
+
 
 function customerSection(){
   displayCustomerAdmin();
 }
 
 function displayCustomerAdmin(){
+  // Get new request
   var xmlhttp = new XMLHttpRequest();
+  // Get table section
   var tableSection = document.getElementById("products");
+  //
   if(xmlhttp){
     xmlhttp.onreadystatechange = function(){
       if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+        // Get server response
         var response = xmlhttp.responseText;
+        // Parse the string response into objects
         var decodeResponse = JSON.parse(response);
+        // Set the title
+        title.innerHTML = "Admin | Cutomers";
         var output = "<h1>Customers</h1>";
+        // Set the heading of the table
         output += "<table><tr><th>ID</th><th>First Name</th><th>Surname</th><th>Email</th><th>Phone Number</th><th>Address</th><th>Town</th><th>County</th><th>Post Code</th></tr>";
 
-
+        // Add data to the row, alternating the colour
         for(var i=0; i<decodeResponse.length; i++){
           var price = parseFloat(decodeResponse[i].Price);
           if(i % 2 == 0){
@@ -49,10 +64,12 @@ function displayCustomerAdmin(){
           }
 
         }
+        // Close table and display
         output += "</table>";
         adminSection.innerHTML = output;
       }
     }
+    // Send data to server
     xmlhttp.open("GET", "displayCustomers.php", false);
     xmlhttp.send();
   }

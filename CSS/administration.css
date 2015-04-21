@@ -1,3 +1,4 @@
+/* Styles the controls on the administration page used for adding, removing and updating the products*/
 #controls{
   box-shadow:  0 8px 6px -3px black;
   padding: 20px 10px 10px 20px;
@@ -5,15 +6,44 @@
   background-color:#E0E0E0;
 }
 
-#customerAdmin{
+/*Styles the navigation buttons at the top of the admin page*/
+.adminNavButton{
   cursor:pointer;
+  color:black;
+  text-decoration:none;
 }
 
-#customerAdmin:hover{
-  text-decoration:underline;
+.adminNavButton:hover{
+  color:white;
 }
 
-/*Admin input*/
+#adminNav{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction:row;
+  -webkit-flex-direction: row;
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
+}
+
+#adminNav a{
+  background-color: rgba(200,200,200, 0.5);
+  padding:10px 30px 10px 30px;
+  width:100%;
+  text-align:center;
+}
+
+#adminNav a:hover{
+  background-color: rgba(100,100,100, 1);
+}
+
+/* Styles the admin search box*/
+#adminSearchBox{
+  width:50%;
+  padding:5px;
+}
+
+/* Styles the admin input boxes in the controls section*/
 label{
   text-align:right;
   float:left;
@@ -48,8 +78,8 @@ fieldset p{
 
 #updateProductPhoto, #addProductPhoto{
   border:1px solid grey;
-  padding:5px;
   background-color: #FFFFFF;
+  padding:30px;
 }
 
 .adminButton{
@@ -85,9 +115,7 @@ fieldset p{
 
 
 /*Table of Products*/
-#products{
-  padding-top:20px;
-}
+
 
 table{
   margin-top:20px;

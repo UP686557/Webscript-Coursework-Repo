@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Administration</title>
+  <title id="title">Admin | Products</title>
   <link rel="stylesheet" type="text/css" href="../CSS/style.css">
   <link rel="stylesheet" type="text/css" href="../CSS/searchbar.css">
   <link rel="stylesheet" type="text/css" href="../CSS/navigation.css">
@@ -18,8 +18,11 @@
     <div id="dialogFoot"></div>
   </div>
 
-  <p id='customerAdmin'>Customers</p>
-  <p id='productAdmin'><a href="../administration/">Products</a></p>
+  <div id='adminNav'>
+    <a class='adminNavButton' href="../">Home</a>
+    <a class='adminNavButton' href="../Administration/">Products</a>
+    <a id='customerAdmin' class='adminNavButton' hred="">Customers</a>
+  </div>
 
   <article id="adminSection">
     <h1>Administration</h1>
@@ -32,8 +35,8 @@
             <p><label>Name:* </label><input type=text name=productName id="addProductName" placeholder="Product Name..." required></p>
             <p><label>Price:* </label><input type=number step="any" name=productPrice id="addProductPrice" placeholder="Price..." required></p>
             <p><label>Quantity:* </label><input type=number name=productQuantity id="addProductQuantity"placeholder="Quantity..." required></p>
-            <p><label>Description:* </label><textarea rows=4 cols=25 name=productDescription id="addProductDescription" placeholder="Description..." required></textarea></p>
-            <p><label>Image: </label><input type=file size=20 id="addProductPhoto">
+            <p><label>Description:* </label><textarea name=productDescription id="addProductDescription" placeholder="Description..." required></textarea></p>
+            <p><label>Image: </label><input type=file size=20 id="addProductPhoto"></p>
           </form>
           <p id="productAdded"></p>
         </fieldset>
@@ -61,7 +64,7 @@
             <p><label>Name: </label><input type=text id=updateProductName placeholder="Product Name..."></p>
             <p><label>Quantity: </label><input type=number id=updateProductQuantity placeholder="Quantity..."></p>
             <p><label>Price: </label><input type=text id=updateProductPrice placeholder="Price..."></p>
-            <p><label>Description: </label><textarea rows=4 cols=25 name=productDescription id=updateProductDescription placeholder="Description..."></textarea></p>
+            <p><label>Description: </label><textarea name=productDescription id=updateProductDescription placeholder="Description..."></textarea></p>
             <p><label>Image: </label><input type=file id=updateProductPhoto></p>
           </form>
           <p id="productUpdated"></p>
@@ -74,8 +77,12 @@
 
     </section>
 
-    <input type=text id=adminSearchBox placeholder='Search Items...'><input type=submit id=adminSearchButton value=Search>
-    <section id="products">
+    <section>
+      <h1>Products</h1>
+      <p><input type=text id=adminSearchBox placeholder='Search Items...'></p>
+      <section id="products">
+
+      </section>
     </section>
   </article>
   <?php include '../footer.php' ?>

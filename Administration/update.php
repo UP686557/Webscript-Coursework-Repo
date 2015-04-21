@@ -1,23 +1,31 @@
 <?php
-require '../dbCredentials.php';
+  // Used to update data in the product table
+  // Include variables from the given file
+  require '../dbCredentials.php';
 
-
+  // Connect to the server
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    // Get the values from the web page
     $ID = $_GET['productID'];
     $Name = $_GET['productName'];
     $Description = $_GET['productDescription'];
     $Quantity = $_GET['productQuantity'];
     $Price = $_GET['productPrice'];
 
+    // Returns the product ID of the updated product. Used to display to the user
     echo "<p>Product ID: " . $ID . "</p>";
 
+    // Condition statements to decide what to update
     if ($Name != ""){
+      // SQL Query
       $sqlName = "UPDATE Product SET Name = '$Name' WHERE ID = '$ID'";
+      // Prepare and execute query
       $statement = $conn->prepare($sqlName);
       $statement->execute();
+      // Return the updated attribute, displayed to the user
       echo "<p>Name: " . $Name . "</p>";
     }
     if($Description != ""){
@@ -39,11 +47,13 @@ require '../dbCredentials.php';
       echo "<p>Price: " . $Price . "</p>";
     }
 
+  // Error Detection
   }
   catch(PDOException $e){
     echo $sql . "<br>" . $e->getMessage();
   }
 
+  // Close the connection
   $conn = null;
 
 ?>

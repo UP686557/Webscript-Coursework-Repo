@@ -1,6 +1,9 @@
+<!-- Adds an order to the order table in the database -->
 <?php
+  // Include variables from the given file
   require 'dbCredentials.php';
 
+  // Connect to server
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,10 +24,11 @@
     echo $sql . "<br>" . $e->getMessage();
   }
 
+  // Close the connection
   $conn = null;
 
 ?>
 
 
-INSERT INTO TAB_STUDENT(name_student, id_teacher_fk) SELECT 'Joe The Student', id_teacher FROM TAB_TEACHER WHERE name_teacher = 'Professor Jack'
- LIMIT 1
+<!-- INSERT INTO TAB_STUDENT(name_student, id_teacher_fk) SELECT 'Joe The Student', id_teacher FROM TAB_TEACHER WHERE name_teacher = 'Professor Jack'
+ LIMIT 1 -->

@@ -3,14 +3,8 @@
 	<nav>
 	<ul>
 		<li><a href="../">Home</a></li>
-			<ul class="dropList">
-				<li><a href="">Sub-page 1.1</a></li>
-				<li><a href="">Sub-page 1.2</a></li>
-				<li><a href="">Sub-page 1.3</a></li>
-			</ul>
-		</li>
 		<li id="basket">
-			<a><img src="../Images/basket.png"><div id="numItems"></div></a>
+			<a><img src="../Images/basket.png" alt="Basket icon"><div id="numItems"></div></a>
 		</li>
 		<li id="search">
 			<form id="searchForm">
