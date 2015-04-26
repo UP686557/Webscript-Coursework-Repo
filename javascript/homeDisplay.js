@@ -23,13 +23,17 @@ function displayItems(results){
   var homeSection = document.getElementById('dynamicArticle');
   // Set the heading
   homeSection.innerHTML = '<h1>Why not try these products?</h1>';
+
+  var itemSection = document.createElement("section");
+  itemSection.setAttribute("id", "homeItems");
+  homeSection.appendChild(itemSection);
   // For each of the items returned by the server display them in a section
   for(var i=0; i<results.length; i++){
     var price = parseFloat(results[i].Price).toFixed(2);
     var sec = document.createElement("section");
     sec.classList.add("homeItem");
     sec.dataset.detail = JSON.stringify(results[i]);
-    homeSection.appendChild(sec);
+    itemSection.appendChild(sec);
     sec.innerHTML = '<div class="imageContainer"><img class="resultsImage" src="' + results[i].Photo + '"></div><p class="resultsName">' + results[i].Name + '</p><p class="resultsPrice">£' + price + '</p>';
 
   }

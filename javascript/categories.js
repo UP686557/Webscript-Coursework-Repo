@@ -87,10 +87,13 @@ function displayCategoriesPage(){
         homeSection.innerHTML = '';
         var categories = [];
 
-        heading = document.createElement("h1");
+        var heading = document.createElement("h1");
         heading.setAttribute("id", "categoriesHeading");
         homeSection.appendChild(heading);
         heading.textContent = "Categories";
+
+
+
 
         for(var i=0; i<response.length; i++){
           // If the categories array already contains the category given, skip the iteration
@@ -133,17 +136,25 @@ function displaySingleCategory(e){
       if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
         var response = JSON.parse(xmlhttp.responseText);
         var homeSection = document.getElementById("dynamicArticle");
-        var heading = document.createElement("h1");
+
         homeSection.innerHTML = '';
+
+        var heading = document.createElement("h1");
         homeSection.appendChild(heading);
         heading.textContent = "Category: " + targetSection;
+
+        var categoriesSection = document.createElement("section");
+        categoriesSection.setAttribute("id", "categoryItems");
+        homeSection.appendChild(categoriesSection);
+
+
 
         for(var i=0; i<response.length; i++){
           var price = parseFloat(response[i].Price).toFixed(2);
           var section = document.createElement("section");
           section.classList.add("categoryItem");
           section.dataset.detail = JSON.stringify(response[i]);
-          homeSection.appendChild(section);
+          categoriesSection.appendChild(section);
 
           section.innerHTML = '<div class="imageContainer"><img class="resultsImage" src="' + response[i].Photo + '"></div><p class="resultsName">' + response[i].Name + '</p><p class="resultsPrice">£' + price + '</p>';
         }

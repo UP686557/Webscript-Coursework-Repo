@@ -16,13 +16,6 @@
   cursor:pointer;
 }
 
-/*#categoriesDrop{
-  border:1px solid red;
-}
-
-.categoryListItem{
-  border:1px solid red;
-}*/
 
 .categoryListItem:hover{
   background-color:white;
