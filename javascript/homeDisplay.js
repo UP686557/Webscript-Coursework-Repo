@@ -30,7 +30,7 @@ function displayItems(results){
     sec.classList.add("homeItem");
     sec.dataset.detail = JSON.stringify(results[i]);
     homeSection.appendChild(sec);
-    sec.innerHTML = '<div class="imageContainer"><img class="resultsImage" alt="Image of' + results[i].Name '" src="' + results[i].Photo + '"></div><p class="resultsName">' + results[i].Name + '</p><p class="resultsPrice">£' + price + '</p>';
+    sec.innerHTML = '<div class="imageContainer"><img class="resultsImage" src="' + results[i].Photo + '"></div><p class="resultsName">' + results[i].Name + '</p><p class="resultsPrice">£' + price + '</p>';
 
   }
   // Set the title and state object
@@ -42,7 +42,7 @@ function displayItems(results){
 
   // update the content
   updateContent(stateObject);
-
+  categoriesDropList();
 }
 
 
@@ -70,7 +70,7 @@ function selectedProduct(event){
   homeSection.appendChild(section);
 
   // Display the product attributes
-  section.innerHTML = "<p class='photo'><img alt='Image of" + results[i].Name "' class='productPhoto' src='" + detail.Photo + "'></p><section id='singleProductDetails'><h1>" + detail.Name + "</h1><p id='singleProductPrice'>£" + price.toFixed(2) + "</p><p>" + detail.Description + "</p></section>";
+  section.innerHTML = "<p class='photo'><img class='productPhoto' src='" + detail.Photo + "'></p><section id='singleProductDetails'><h1>" + detail.Name + "</h1><p id='singleProductPrice'>£" + price.toFixed(2) + "</p><p>" + detail.Description + "</p></section>";
   newBasketButton.innerHTML = "Add to Basket";
 
   // Add an input for the quantity of the product
@@ -151,6 +151,7 @@ function updateContent(stateObject) {
     title.innerHTML = stateObject.Title;
 
 
+
     var items = document.querySelectorAll(".homeItem");
     // If the homeItems exist then add an event listener to display the single item in more detail on click
     if(items){
@@ -167,6 +168,7 @@ function updateContent(stateObject) {
           displayCheckout();
         });
     }
+
 
     basketButton = document.getElementById("basketButton");
     quantityInput = document.getElementById("productQuantity");

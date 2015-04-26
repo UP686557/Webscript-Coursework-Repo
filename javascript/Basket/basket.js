@@ -140,6 +140,21 @@ function updateQuantity(){
   }
 }
 
+function updateBasketNumber(){
+  var basketStorage = localStorage.getItem("basket"); //This is in json format as a string so you need to parse it
+  jsonBasket = JSON.parse(basketStorage);
+  var totalItems = 0;
+
+  for (var i in jsonBasket){
+    totalItems += JSON.parse(jsonBasket[i].quantity);
+  }
+
+  basketIcon = document.getElementById("numItems");
+  basketIcon.innerHTML = totalItems;
+}
+
+var loadBasketButton = document.getElementById("basket");
+loadBasketButton.addEventListener('click', displayBasket);
 
 
 function setDeleteButtons(){

@@ -9,12 +9,13 @@ function addProduct(){
   var productName = document.getElementById("addProductName");
   var productDescription = document.getElementById("addProductDescription");
   var productQuantity = document.getElementById("addProductQuantity");
+  var productCategory = document.getElementById("addProductCategory");
   var productPrice = document.getElementById("addProductPrice");
   var productPhoto = document.getElementById("addProductPhoto");
   // If all input elements filled execute
-  if(productName.value != "" && productDescription != "" && productQuantity != "" && productPrice != ""){
+  if(productName.value != "" && productDescription != "" && productQuantity != "" && productPrice != "" && productCategory != ""){
     // Set the url to send to the server
-    var url = "insert.php?productName=" + productName.value + "&productDescription=" + productDescription.value + "&productQuantity=" + productQuantity.value + "&productPrice=" + productPrice.value + "&productPhoto=Images/Products/" + productPhoto.value;
+    var url = "insert.php?productName=" + productName.value + "&productDescription=" + productDescription.value + "&productCategory=" + productCategory.value + "&productQuantity=" + productQuantity.value + "&productPrice=" + productPrice.value + "&productPhoto=Images/Products/" + productPhoto.value;
     // Send data to server
     xmlhttp.open("GET", url, false);
     xmlhttp.send();
@@ -64,13 +65,14 @@ function updateProduct(){
   var productID = document.getElementById("updateProductID").value;
   var productName = document.getElementById("updateProductName").value;
   var productDescription = document.getElementById("updateProductDescription").value;
+  var productCategory = document.getElementById("updateProductCategory");
   var productQuantity = document.getElementById("updateProductQuantity").value;
   var productPrice = document.getElementById("updateProductPrice").value;
 
   // If all input elements filled execute
-  if(productID != "" && (productName != "" || productDescription != "" || productQuantity != "" || productPrice != "")){
+  if(productID != "" && (productName != "" || productDescription != "" || productQuantity != "" || productPrice != "" || productCategory != "")){
     // Set the url to send to the server
-    var url = "update.php?productID=" + productID + "&productName=" + productName + "&productDescription=" + productDescription + "&productQuantity=" + productQuantity + "&productPrice=" + productPrice;
+    var url = "update.php?productID=" + productID + "&productName=" + productName + "&productDescription=" + productDescription + "&productCategory=" + productCategory.value + "&productQuantity=" + productQuantity + "&productPrice=" + productPrice;
 
     // Send to the server
     xmlhttp.open("GET", url, false);
@@ -101,7 +103,7 @@ function displayProducts(){
         // Decode the response
         var decodeResponse = JSON.parse(response);
         // Set the table heading
-        var output = "<table><tr><th>ID</th><th>Name</th><th>Description</th><th>Quantity</th><th>Price</th></tr>";
+        var output = "<table><tr><th>ID</th><th>Name</th><th>Description</th><th>Category</th><th>Price</th><th>Quantity</th></tr>";
 
         // Set each table row
         for(var i=0; i<decodeResponse.length; i++){
@@ -111,6 +113,7 @@ function displayProducts(){
                         "<td>" + decodeResponse[i].ID + "</td>" +
                         "<td>" + decodeResponse[i].Name + "</td>" +
                         "<td>" + decodeResponse[i].Description + "</td>" +
+                        "<td>" + decodeResponse[i].Category + "</td>" +
                         "<td class='tableQuantity'>" + decodeResponse[i].Quantity + "</td>" +
                         "<td>£" + price.toFixed(2) + "</td>" +
                       "<tr>";
@@ -120,6 +123,7 @@ function displayProducts(){
                         "<td class='tableAltColour'>" + decodeResponse[i].ID + "</td>" +
                         "<td class='tableAltColour'>" + decodeResponse[i].Name + "</td>" +
                         "<td class='tableAltColour'>" + decodeResponse[i].Description + "</td>" +
+                        "<td class='tableAltColour'>" + decodeResponse[i].Category + "</td>" +
                         "<td class='tableAltColour tableQuantity'>" + decodeResponse[i].Quantity + "</td>" +
                         "<td class='tableAltColour'>£" + price.toFixed(2) + "</td>" +
                       "<tr>";

@@ -1,0 +1,30 @@
+.categoryPageSection{
+  width:23%;
+  background-color: rgba(255,255,255,0.9);
+  box-shadow:  0 8px 6px -7px black;
+  padding-bottom:50px;
+  margin:1%;
+  display:block;
+  float:left;
+  margin-bottom:0;
+  padding-bottom:0px;
+  text-align:center;
+  padding:20px 0px 20px 0px;
+}
+
+.categoryPageSection:hover, .categoryItem:hover{
+  cursor:pointer;
+}
+
+/*#categoriesDrop{
+  border:1px solid red;
+}
+
+.categoryListItem{
+  border:1px solid red;
+}*/
+
+.categoryListItem:hover{
+  background-color:white;
+  color:black;
+}

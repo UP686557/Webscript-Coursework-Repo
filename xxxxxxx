@@ -1,0 +1,6 @@
+var url = "addCustomer.php?firstName=" + firstName.value + "&surname=" + surname.value + "&email=" + email.value + "&phoneNumber=" + phoneNumber.value + "&address=" + address.value + "&town=" + town.value + "&county=" + county.value + "&postCode=" + postCode.value;
+xmlhttp.open("GET", url, false);
+xmlhttp.send();
+
+response = xmlhttp.responseText;
+Alert.render("Customer Added", response);

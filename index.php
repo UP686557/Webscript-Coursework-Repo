@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="CSS/singleProduct.css">
 		<link rel="stylesheet" type="text/css" href="CSS/dialogBox.css">
     <link rel="stylesheet" type="text/css" href="CSS/basketPage.css">
+		<link rel="stylesheet" type="text/css" href="CSS/categories.css">
 
 		<meta name="description" content="">
 		<meta charset="UTF-8">
@@ -31,15 +32,17 @@
 
 		<?php include 'footer.php' ?>
 
-		<script language="JavaScript" type="text/javascript" src="../javascript/homeDisplay.js"></script>
-		<script language="JavaScript" type="text/javascript" src="../javascript/ajaxSearch.js"></script>
-		<script language="JavaScript" type="text/javascript" src="../javascript/Basket/basketStorageManager.js"></script>
-		<script language="JavaScript" type="text/javascript" src="../javascript/Basket/basketSimpleManager.js"></script>
-		<script language="JavaScript" type="text/javascript" src="../javascript/Basket/basketSetup.js"></script>
-		<script language="JavaScript" type="text/javascript" src="../javascript/customAlert.js"></script>
-		<script language="JavaScript" type="text/javascript" src="../javascript/sharedJS.js"></script>
-	  <script language="JavaScript" type="text/javascript" src="../javascript/Basket/basket.js"></script>
-	  <script language="JavaScript" type="text/javascript" src="../javascript/Basket/checkout.js"></script>
+		<script type="text/javascript" src="../javascript/homeDisplay.js"></script>
+		<script type="text/javascript" src="../javascript/ajaxSearch.js"></script>
+		<script type="text/javascript" src="../javascript/Basket/basketStorageManager.js"></script>
+		<script type="text/javascript" src="../javascript/Basket/basketSimpleManager.js"></script>
+		<script type="text/javascript" src="../javascript/Basket/basketSetup.js"></script>
+		<script type="text/javascript" src="../javascript/customAlert.js"></script>
+		<script type="text/javascript" src="../javascript/sharedJS.js"></script>
+	  <script type="text/javascript" src="../javascript/Basket/basket.js"></script>
+	  <script type="text/javascript" src="../javascript/Basket/checkout.js"></script>
+		<script type="text/javascript" src="../javascript/categories.js"></script>
+
 
 	</body>
 

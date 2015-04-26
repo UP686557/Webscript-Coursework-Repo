@@ -2,7 +2,10 @@
 	echo'
 	<nav>
 	<ul>
-		<li><a href="../">Home</a></li>
+		<li id="homeNav"><a href="../">Home</a></li>
+		<li id="categoriesNav">
+			<a>Categories</a>
+		</li>
 		<li id="basket">
 			<a><img src="../Images/basket.png" alt="Basket icon"><div id="numItems"></div></a>
 		</li>

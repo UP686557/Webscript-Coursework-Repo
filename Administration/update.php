@@ -12,6 +12,7 @@
     $ID = $_GET['productID'];
     $Name = $_GET['productName'];
     $Description = $_GET['productDescription'];
+    $Category = $_GET["productCategory"];
     $Quantity = $_GET['productQuantity'];
     $Price = $_GET['productPrice'];
 
@@ -33,6 +34,12 @@
       $statement = $conn->prepare($sqlDes);
       $statement->execute();
       echo "<p>Description: " . $Description . "</p>";
+    }
+    if($Category != ""){
+      $sqlCategory = "UPDATE Product SET Category = '$Category' WHERE ID = '$ID'";
+      $statement = $conn->prepare($sqlCategory);
+      $statement->execute();
+      echo "<p>Category: " . $Category . "</p>";
     }
     if($Quantity != ""){
       $sqlQuant = "UPDATE Product SET Quantity = '$Quantity' WHERE ID = '$ID'";

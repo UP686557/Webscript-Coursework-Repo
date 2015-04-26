@@ -14,8 +14,9 @@
     $Quantity = $_GET['productQuantity'];
     $Price = $_GET['productPrice'];
     $Photo = $_GET['productPhoto'];
+    $Category = $_GET['productCategory'];
     // SQL Query
-    $sql = "INSERT INTO Product (Name, Description, Quantity, Photo, Price) VALUES ('$Name','$Description','$Quantity', '$Photo','$Price')";
+    $sql = "INSERT INTO Product (Name, Description, Quantity, Photo, Price, Category) VALUES ('$Name','$Description','$Quantity', '$Photo','$Price', '$Category')";
     // Execute the query
     $conn->exec($sql);
 
@@ -23,8 +24,9 @@
     echo '<p>Name: ' . $Name . '</p>';
     echo '<p>Description: ' . $Description . '</p>';
     echo '<p>Quantity: ' . $Quantity . '</p>';
+    echo '<p>Category: ' . $Category . '</p>';
     echo '<p>Price: ' . $Price . '</p>';
-    echo '<img src="' . $Photo . '">';
+    echo '<img src=../"' . $Photo . '">';
 
   }
 

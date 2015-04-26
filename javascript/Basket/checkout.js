@@ -21,7 +21,7 @@ function displayCheckout(){
             '<label>Surname*</label><input id="surname" type="text" name="surname" required>' +
             '<label>Email Address*</label><input id="email" type="email" name="email" required>' +
             '<label>Phone Number*</label><input id="phoneNumber" type="tel" name="phoneNumber" required>' +
-            '<h1>Address Details</h1>' +
+            '<h1>Delivery Address Details</h1>' +
             '<label>Address*</label><input id="address" type="text" name="address" required>' +
             '<label>Town*</label><input id="town" type="text" name="town" required>' +
             '<label>County*</label><input id="county" type="text" name="county" required>' +

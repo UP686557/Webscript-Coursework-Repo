@@ -36,6 +36,7 @@
             <p><label>Price:* </label><input type=number step="any" name=productPrice id="addProductPrice" placeholder="Price..." required></p>
             <p><label>Quantity:* </label><input type=number name=productQuantity id="addProductQuantity"placeholder="Quantity..." required></p>
             <p><label>Description:* </label><textarea name=productDescription id="addProductDescription" placeholder="Description..." required></textarea></p>
+            <p><label>Category:* </label><input name=productCategory id="addProductCategory" placeholder="Category..." required></p>
             <p><label>Image: </label><input type=file size=20 id="addProductPhoto"></p>
           </form>
           <p id="productAdded"></p>
@@ -65,6 +66,7 @@
             <p><label>Quantity: </label><input type=number id=updateProductQuantity placeholder="Quantity..."></p>
             <p><label>Price: </label><input type=text id=updateProductPrice placeholder="Price..."></p>
             <p><label>Description: </label><textarea name=productDescription id=updateProductDescription placeholder="Description..."></textarea></p>
+            <p><label>Category: </label><input name=productCategory id="updateProductCategory" placeholder="Category..." required></p>
             <p><label>Image: </label><input type=file id=updateProductPhoto></p>
           </form>
           <p id="productUpdated"></p>
@@ -87,10 +89,10 @@
   </article>
   <?php include '../footer.php' ?>
 
-    <script language="JavaScript" type="text/javascript" src="../javascript/Administration/editProducts.js"></script>
-    <script language="JavaScript" type="text/javascript" src="../javascript/customAlert.js"></script>
-    <script language="JavaScript" type="text/javascript" src="../javascript/Administration/adminSearch.js"></script>
-    <script language="JavaScript" type="text/javascript" src="../javascript/Administration/customersAdmin.js"></script>
+    <script type="text/javascript" src="../javascript/Administration/editProducts.js"></script>
+    <script type="text/javascript" src="../javascript/customAlert.js"></script>
+    <script type="text/javascript" src="../javascript/Administration/adminSearch.js"></script>
+    <script type="text/javascript" src="../javascript/Administration/customersAdmin.js"></script>
 
 </body>
 

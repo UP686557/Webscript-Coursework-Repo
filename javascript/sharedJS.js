@@ -67,7 +67,7 @@ function searchItem(e, sortChange){
             section.dataset.detail = JSON.stringify(response[i]);
             homeSection.appendChild(section);
             // Display the attributes of the items
-            section.innerHTML += '<p class="searchPhoto"><img alt="Image of' + results[i].Name '" src="' + response[i].Photo + '"></p><section class="searchedProductDetails"><h1 class="name">' + response[i].Name + '</h1><p class="price">£' + price + '</p><p class="description">' + response[i].Description + '</p></section>';
+            section.innerHTML += '<p class="searchPhoto"><img src="' + response[i].Photo + '"></p><section class="searchedProductDetails"><h1 class="name">' + response[i].Name + '</h1><p class="price">£' + price + '</p><p class="description">' + response[i].Description + '</p></section>';
           }
           // Get each item and add an event listener to them
           var items = document.querySelectorAll(".searchResult");

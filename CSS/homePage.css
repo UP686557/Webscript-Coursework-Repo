@@ -1,4 +1,4 @@
-section.homeItem{
+section.homeItem, .categoryItem{
   width:20%;
   background-color: rgba(255,255,255,0.9);
   box-shadow:  0 8px 6px -7px black;
@@ -10,12 +10,12 @@ section.homeItem{
   padding-bottom:0px;
 }
 
-section.homeItem:hover{
+section.homeItem:hover, .categoryPageSection:hover, .categoryItem:hover{
   cursor:pointer;
   background-color:rgb(245,245,245);
 }
 
-section.homeItem:hover > .resultsName{
+section.homeItem:hover>.resultsName, .categoryItem:hover>.resultsName, .categoryPageSection:hover>p{
   text-decoration:underline;
 }
 
