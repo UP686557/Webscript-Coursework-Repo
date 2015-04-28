@@ -116,6 +116,9 @@ fieldset p{
 
 /*Table of Products*/
 
+.adminDescription{
+  text-align:left;
+}
 
 table{
   margin-top:20px;
@@ -125,7 +128,7 @@ table{
   clear:left;
 }
 table td{
-  text-align:left;
+  text-align:center;
   padding:8px;
 }
 

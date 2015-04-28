@@ -17,7 +17,7 @@ function addProduct(){
     // Set the url to send to the server
     var url = "insert.php?productName=" + productName.value + "&productDescription=" + productDescription.value + "&productCategory=" + productCategory.value + "&productQuantity=" + productQuantity.value + "&productPrice=" + productPrice.value + "&productPhoto=Images/Products/" + productPhoto.value;
     // Send data to server
-    xmlhttp.open("GET", url, false);
+    xmlhttp.open("GET", url, true);
     xmlhttp.send();
 
     // Alert to the user what was added
@@ -103,7 +103,7 @@ function displayProducts(){
         // Decode the response
         var decodeResponse = JSON.parse(response);
         // Set the table heading
-        var output = "<table><tr><th>ID</th><th>Name</th><th>Description</th><th>Category</th><th>Price</th><th>Quantity</th></tr>";
+        var output = "<table><tr><th>ID</th><th>Name</th><th>Description</th><th>Category</th><th>Quantity</th><th>Price</th></tr>";
 
         // Set each table row
         for(var i=0; i<decodeResponse.length; i++){
@@ -112,7 +112,7 @@ function displayProducts(){
             output += "<tr>" +
                         "<td>" + decodeResponse[i].ID + "</td>" +
                         "<td>" + decodeResponse[i].Name + "</td>" +
-                        "<td>" + decodeResponse[i].Description + "</td>" +
+                        "<td class='adminDescription'>" + decodeResponse[i].Description + "</td>" +
                         "<td>" + decodeResponse[i].Category + "</td>" +
                         "<td class='tableQuantity'>" + decodeResponse[i].Quantity + "</td>" +
                         "<td>£" + price.toFixed(2) + "</td>" +
@@ -122,7 +122,7 @@ function displayProducts(){
             output += "<tr>" +
                         "<td class='tableAltColour'>" + decodeResponse[i].ID + "</td>" +
                         "<td class='tableAltColour'>" + decodeResponse[i].Name + "</td>" +
-                        "<td class='tableAltColour'>" + decodeResponse[i].Description + "</td>" +
+                        "<td class='tableAltColour adminDescription'>" + decodeResponse[i].Description + "</td>" +
                         "<td class='tableAltColour'>" + decodeResponse[i].Category + "</td>" +
                         "<td class='tableAltColour tableQuantity'>" + decodeResponse[i].Quantity + "</td>" +
                         "<td class='tableAltColour'>£" + price.toFixed(2) + "</td>" +
@@ -145,7 +145,7 @@ function displayProducts(){
       }
     }
     // Send data to server
-    xmlhttp.open("GET", "../Administration/display.php", false);
+    xmlhttp.open("GET", "../Administration/display.php", true);
     xmlhttp.send();
   }
 }

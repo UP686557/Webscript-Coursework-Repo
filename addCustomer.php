@@ -1,6 +1,6 @@
 <?php
   require 'dbCredentials.php';
-
+  ini_set('display_errors', 1);
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,19 +14,21 @@
     $county = $_GET['county'];
     $postCode = $_GET['postCode'];
 
-
-    $sql = "INSERT INTO Customer (FirstName, LastName, Email, PhoneNumber, Address, Town, County, PostCode) VALUES ('$fName','$surname','$email', '$phoneNumber','$address','$town','$county','$postCode')";
+    $sql = "INSERT INTO Customer (FirstName, LastName, Email, PhoneNumber, Address, Town, County, PostCode)
+            VALUES ('$fName','$surname','$email', '$phoneNumber','$address','$town','$county','$postCode')";
     $query = $conn->prepare($sql);
     $query->execute();
-    echo '<p>Name: ' . $fName . $surname . '</p>';
-    echo '<p>Email: ' . $email . '</p>';
-    echo '<p>Phone Number: ' . $phoneNumber . '</p>';
-    echo '<p>Address: ' . $address . '</p>';
-    echo '<p>Town: ' . $town . '</p>';
-    echo '<p>County: ' . $county . '</p>';
-    echo '<p>Post Code: ' . $postCode . '</p>';
+    $customerID = $conn->lastInsertId();
 
 
+
+    $sql2 = "SELECT * FROM Customer WHERE ID = '$customerID'";
+    $query2 = $conn->prepare($sql2);
+    $query2->execute();
+
+    $result = $query2->fetchAll(PDO::FETCH_ASSOC);
+    $json = json_encode($result);
+    echo $json;
   }
   catch(PDOException $e){
     echo $sql . "<br>" . $e->getMessage();

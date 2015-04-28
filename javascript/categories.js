@@ -113,9 +113,7 @@ function displayCategoriesPage(){
         categorySections = document.getElementsByClassName("categoryPageSection");
 
         for(var i=0; i<categorySections.length; i++){
-          categorySections[i].addEventListener("click", function(e){
-            displaySingleCategory(e);
-          });
+          categorySections[i].addEventListener("click", displaySingleCategory);
         }
 
       }
@@ -162,9 +160,7 @@ function displaySingleCategory(e){
         categoryItems = document.getElementsByClassName("categoryItem");
 
         for(var i=0; i<categoryItems.length; i++){
-          categoryItems[i].addEventListener("click", function(e){
-            selectedProduct(e);
-          });
+          categoryItems[i].addEventListener("click", selectedProduct);
         }
 
       }

@@ -24,7 +24,7 @@
     // Execute the query
     $conn->exec($sql);
     // Return a completion message and a link to the index page
-    echo 'Database Created' . '<p><a href="../">Start using the website</a></p>';
+    echo 'Demo Products Added' . '<p><a href="../">Start using the website</a></p>';
   }
 
   // Error Detection

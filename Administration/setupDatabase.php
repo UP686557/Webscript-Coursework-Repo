@@ -37,13 +37,15 @@
 
     CREATE TABLE IF NOT EXISTS OrderTable(
       ID int NOT NULL AUTO_INCREMENT,
-      Date date NOT NULL,
+      Date datetime NOT NULL,
       PRIMARY KEY (ID),
+      TotalPrice float NOT NULL,
       Customer_ID int NOT NULL,
       CONSTRAINT fk_Order_1
         FOREIGN KEY (Customer_ID)
         REFERENCES coursework_db.Customer (ID)
     ) ENGINE=innoDB;
+
 
     CREATE TABLE IF NOT EXISTS OrderItem(
       ID int NOT NULL AUTO_INCREMENT,

@@ -3,19 +3,19 @@
   require '../dbCredentials.php';
 
   try{
-  $pdo = new PDO("mysql:host=localhost", $username, $password);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo = new PDO("mysql:host=localhost", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $databasename = "`".str_replace("`","``",$dbname)."`";
-  $pdo->query("CREATE DATABASE IF NOT EXISTS $databasename");
-  $pdo->query("use $databasename");
+    $databasename = "`".str_replace("`","``",$dbname)."`";
+    $pdo->query("CREATE DATABASE IF NOT EXISTS $databasename");
+    $pdo->query("use $databasename");
 
-  include "setupDatabase.php";
+    include "setupDatabase.php";
 
   }
-  
+
   catch(PDOException $e)
   {
-    echo $sql . '<br>' . $e->getMessage();
+    echo $pdo . '<br>' . $e->getMessage();
   }
 ?>

@@ -106,6 +106,15 @@ function paymentPage(){
       }
     });
 
+
+    confirmPayment.addEventListener('click', function(){
+      addCustomer();
+      basketArticle = document.getElementById("checkout");
+      basketArticle.setAttribute("id", "dynamicArticle");
+      localStorage.removeItem("basket");
+      updateBasketNumber();
+    });
+
     // Set state obejct
     var stateObject = {Content : basketArticle.innerHTML, Title: title.innerHTML};
 
@@ -130,7 +139,7 @@ function miniBasket(){
   // Parse basket
   jsonBasket = JSON.parse(basketStorage);
   // Initiate total price
-  var totalPrice = 0;
+  totalPrice = 0;
 
   // Create basket summary section
   miniBasketSection = document.createElement("section");

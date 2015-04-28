@@ -1,5 +1,5 @@
 <?php
-require 'dbCredentials.php';
+  require 'dbCredentials.php';
 
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

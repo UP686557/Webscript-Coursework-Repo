@@ -1,6 +1,13 @@
 // Get button to change to customer section
 var customersButton = document.getElementById("customerAdmin");
-customersButton.addEventListener('click', customerSection);
+if(customersButton){
+  customersButton.addEventListener('click', customerSection);
+}
+
+var ordersButton = document.getElementById("orderAdmin");
+if(ordersButton){
+  ordersButton.addEventListener('click', displayOrders);
+}
 
 // Get admin section for dynamic content
 var adminSection = document.getElementById("adminSection");
@@ -70,7 +77,67 @@ function displayCustomerAdmin(){
       }
     }
     // Send data to server
-    xmlhttp.open("GET", "displayCustomers.php", false);
+    xmlhttp.open("GET", "displayCustomers.php", true);
+    xmlhttp.send();
+  }
+}
+
+function displayOrders(){
+  // Get new request
+  var xmlhttp = new XMLHttpRequest();
+  // Get table section
+  var tableSection = document.getElementById("products");
+  //
+  if(xmlhttp){
+    xmlhttp.onreadystatechange = function(){
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+        // Get server response
+        var response = xmlhttp.responseText;
+        // Parse the string response into objects
+        var decodeResponse = JSON.parse(response);
+        // Set the title
+        title.innerHTML = "Admin | Orders";
+        var output = "<h1>Orders</h1>";
+        // Set the heading of the table
+        output += "<table><tr><th>Order_ID</th><th>Customer_ID</th><th>Product_ID</th><th>Product Name</th><th>Price</th><th>Quantity</th><th>Total Price</th><th>Date(YYYY/MM/DD) / Time</th></tr>";
+
+        // Add data to the row, alternating the colour
+        for(var i=0; i<decodeResponse.length; i++){
+          var price = parseFloat(decodeResponse[i].Price);
+          if(i % 2 == 0){
+            output += "<tr>" +
+                        "<td>" + decodeResponse[i].Order_ID + "</td>" +
+                        "<td>" + decodeResponse[i].Customer_ID + "</td>" +
+                        "<td>" + decodeResponse[i].Product_ID + "</td>" +
+                        "<td>" + decodeResponse[i].Name + "</td>" +
+                        "<td>£" + decodeResponse[i].Price + "</td>" +
+                        "<td>" + decodeResponse[i].Quantity + "</td>" +
+                        "<td>£" + decodeResponse[i].TotalPrice + "</td>" +
+                        "<td>" + decodeResponse[i].Date + "</td>" +
+                        "<td>" +
+                      "<tr>";
+          }
+          else{
+            output += "<tr>" +
+                        "<td class='tableAltColour'>" + decodeResponse[i].Order_ID + "</td>" +
+                        "<td class='tableAltColour'>" + decodeResponse[i].Customer_ID + "</td>" +
+                        "<td class='tableAltColour'>" + decodeResponse[i].Product_ID + "</td>" +
+                        "<td class='tableAltColour'>" + decodeResponse[i].Name + "</td>" +
+                        "<td class='tableAltColour'>£" + decodeResponse[i].Price + "</td>" +
+                        "<td class='tableAltColour'>" + decodeResponse[i].Quantity + "</td>" +
+                        "<td class='tableAltColour'>£" + decodeResponse[i].TotalPrice + "</td>" +
+                        "<td class='tableAltColour'>" + decodeResponse[i].Date + "</td>" +
+                      "<tr>";
+          }
+
+        }
+        // Close table and display
+        output += "</table>";
+        adminSection.innerHTML = output;
+      }
+    }
+    // Send data to server
+    xmlhttp.open("GET", "Checkout/displayOrders.php", true);
     xmlhttp.send();
   }
 }

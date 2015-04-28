@@ -42,6 +42,10 @@
 	  <script type="text/javascript" src="../javascript/Basket/basket.js"></script>
 	  <script type="text/javascript" src="../javascript/Basket/checkout.js"></script>
 		<script type="text/javascript" src="../javascript/categories.js"></script>
+		<script type="text/javascript" src="../javascript/Administration/customersAdmin.js"></script>
+		<script type="text/javascript" src="../javascript/Administration/order.js"></script>
+
+
 
 
 	</body>
